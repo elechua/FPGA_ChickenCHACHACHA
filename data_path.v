@@ -3,7 +3,7 @@ module data_path(
     input statecombo_next_turn,
     input [2-1:0] N,
     input [4-1:0] position_data,
-    input A
+    input A, B
     );
     
     wire same_result;
