@@ -1,5 +1,5 @@
 module control_unit(
-    input CLK, c, key, go, win,
+    input CLK, c, key, go, win, //key =  input, c = random generate 완료, go = 비교
     output reg A, B
     );
     reg [3-1:0] M;
