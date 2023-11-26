@@ -1,8 +1,13 @@
 module control_unit(
-    input CLK, c, key, go, win,
+    input CLK, c, [3:0] key, go, win,
     output reg A, B
-    );
+    );  
     reg [2:0] M;
+    reg [1:0] T;
+    reg [3:0] N; // 00, 01, 10
+    reg [5-1:0] p1_cnt;
+    reg [5-1:0] p2_cnt;
+    reg [5-1:0] p3_cnt;
 
     always @(posedge CLK) begin
         case(M)
@@ -18,20 +23,38 @@ module control_unit(
                     M <= 3'b001;
                 end
                 else begin
+                    N=key;
                     M <= 3'b010;
                 end
             3'b010:
+                if(N==2)
+                    p1_cnt=5'b00000;
+                    p2_cnt=5'b01100;
+                else if(N==3)
+                    p1_cnt=5'b00000;
+                    p2_cnt=5'b01000;
+                    p3_cnt=5'b01000;
+                else if(N==4)
+                    p1_cnt=5'b00000;
+                    p1_cnt=5'b00110;
+                    p1_cnt=5'b00000;
+                    p1_cnt=5'b0000;
+                // initialize positions of each player
+                T<=2'b00;
                 M <= M + 3'b001;
             3'b011:
                 if(key == 0) begin
                     M <= 3'b011;
                 end
-                else if(key == 1) begin
+                else begin
+                data_memory(clk, 1, [4-1:0] ADDR, [4-1:0] DATA_IN, [4-1:0] DATA_OUT);
+                    // player 한칸 앞 값 register에 저장
                     A <= 1;
                     M <= 3'b100;
                 end
             3'b100:
                 A <= 0;
+                // 뒤집은 숫자 아래 register에 저장
                 if(go == 0) begin
                     M <= 3'b101;
                 end
@@ -39,6 +62,7 @@ module control_unit(
                     M <= 3'b110;
                 end
             3'b101:
+                T <= T + 2'b01;
                 M <= 3'b011;
             3'b110:
                 B <= 1;
@@ -49,7 +73,7 @@ module control_unit(
                     M <= 3'b111;
                 end
             3'b111:
-                // Add necessary logic for state 3'b111
+                //logic for state 3'b111
         endcase
     end
 endmodule
