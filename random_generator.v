@@ -1,26 +1,11 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2023/11/24 23:33:31
-// Design Name: 
-// Module Name: random_generator
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
-
 module random_generator(
-
+    output reg [0:
     );
+    initial begin
+    a = $urandom_rang(0, 10)
+
+        case (a)
+
+        endcase
+    end
 endmodule
