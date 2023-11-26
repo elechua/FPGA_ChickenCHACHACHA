@@ -2,7 +2,7 @@ module control_unit(
     input CLK, c, key, go, win,
     output reg A, B
     );
-    reg [2:0] M;
+    reg [3-1:0] M;
 
     initial begin
     M <= 3'b000;
