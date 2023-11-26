@@ -4,6 +4,10 @@ module control_unit(
     );
     reg [2:0] M;
 
+    initial begin
+    M <= 3'b000;
+    end
+    
     always @(posedge CLK) begin
         case(M)
             3'b000:
