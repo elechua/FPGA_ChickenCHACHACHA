@@ -1,5 +1,5 @@
 module next_turn(
-    int rst,
+    input rst,
     input [2-1:0] N,
     input [2-1:0] T,
     input statecombo_next_turn,
