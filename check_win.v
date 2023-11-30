@@ -22,7 +22,7 @@ module check_win(
     cnt_player1 cnp1(.rst(rst), .B(B), .N(N) .p_da1(stop_increase_1), .p1_cnt(p1_cnt));
     cnt_player2 cnp2(.rst(rst), .B(B), .N(N) .p_da2(stop_increase_2), .p2_cnt(p2_cnt));
     cnt_player3 cnp3(.rst(rst), .B(B), .N(N) .p_da3(stop_increase_3), .p3_cnt(p3_cnt));
-    cnt_player4 cnp4(.rst(rst), .B(B), .N(N) .p_da4(stop_increase_4), .p3_cnt(p3_cnt));
+    cnt_player4 cnp4(.rst(rst), .B(B), .N(N) .p_da4(stop_increase_4), .p3_cnt(p4_cnt));
     three_to_one_MUX_upper upmux(.T(T), .p1_cnt(p1_cnt), .p2_cnt(p2_cnt), .p3_cnt(p3_cnt), .out(out1));
     three_to_one_MUX_lower lowmux(.T(T), .p1_cnt(p1_cnt), .p2_cnt(p2_cnt), .p3_cnt(p3_cnt), .out(out2));
     which_one wo(.out1(out1), .out2(out2), .pos_data(pos_data));
