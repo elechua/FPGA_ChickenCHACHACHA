@@ -2,8 +2,8 @@ module random_generator(
     output reg random_edge_order
     output reg random_center_order
 );
-    // 각 타일 위치를 몇비트로 설정하지 -> 6 bit => 24*6=144 bit?
-    reg [144-1:0] orders [0:9]  // 일단은 10개만 
+    // 각 타일 위치를 몇비트로 설정하지 -> 5 bit => 24*5=120 bit?
+    reg [120-1:0] orders [0:9]  // 일단은 10개만 
     reg [4:0] random_number;  // random number (0-9)
     
     initial begin
