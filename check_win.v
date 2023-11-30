@@ -1,6 +1,7 @@
 module check_win(
     input clk,
     input [2-1:0] T,
+    input [5-1:0] N,
     input B,
     output reg W,
     output [5-1:0] afterposition_data
