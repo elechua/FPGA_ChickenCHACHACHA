@@ -8,7 +8,7 @@ module control_unit(
     );
 
     always @(posedge CLK) begin
-        if(rst) M = 3'b000;
+        if(rst) M <= 3'b000;
         else begin
             if(M=3'b110)
                 B=1;
