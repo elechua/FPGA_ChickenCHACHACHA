@@ -44,6 +44,7 @@ module control_unit(
                 M <= M + 3'b001;
             3'b011:
                 if(key == 0) begin
+                    A <= 1;
                     M <= 3'b011;
                 end
                 else begin
