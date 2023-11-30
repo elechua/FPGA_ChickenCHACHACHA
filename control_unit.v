@@ -1,5 +1,5 @@
 module control_unit(
-    input CLK, c, [3:0] key, go, win,
+    input clk, c, [3:0] key, go, win,
     input [3:0] M,
     input rst,
     output reg A, B,
@@ -7,7 +7,7 @@ module control_unit(
     output reg [2:0] M;
     );
 
-    always @(posedge CLK) begin
+    always @(posedge clk) begin
         if(rst) M <= 3'b000;
         else begin
             if(M=3'b110)
