@@ -68,26 +68,28 @@ module display_module {
     reg [4:0] art_y;
 
     always @(counter_h) begin
-    	if 	    (counter_h <= 'd290) begin counter_col <= 0; square_x <= counter_h - 210; end
-    	else if (counter_h <= 'd370) begin counter_col <= 1; square_x <= counter_h - 290; end
-    	else if (counter_h <= 'd450) begin counter_col <= 2; square_x <= counter_h - 370; end
-    	else if (counter_h <= 'd530) begin counter_col <= 3; square_x <= counter_h - 450; end
-    	else if (counter_h <= 'd610) begin counter_col <= 4; square_x <= counter_h - 530; end
-    	else if (counter_h <= 'd690) begin counter_col <= 5; square_x <= counter_h - 610; end
-    	else if (counter_h <= 'd770) begin counter_col <= 6; square_x <= counter_h - 690; end
-    	else if	(counter_h <= 'd850) begin counter_col <= 7; square_x <= counter_h - 770; end
-        else if                      begin counter_col <= 8; square_x <= counter_h - 850; end
+        if (counter_h <= 'd210) begin counter_col <= 0; square_x <= counter_h; end
+    	else if (counter_h <= 'd290) begin counter_col <= 1; square_x <= counter_h - 210; end
+    	else if (counter_h <= 'd370) begin counter_col <= 2; square_x <= counter_h - 290; end
+    	else if (counter_h <= 'd450) begin counter_col <= 3; square_x <= counter_h - 370; end
+    	else if (counter_h <= 'd530) begin counter_col <= 4; square_x <= counter_h - 450; end
+    	else if (counter_h <= 'd610) begin counter_col <= 5; square_x <= counter_h - 530; end
+    	else if (counter_h <= 'd690) begin counter_col <= 6; square_x <= counter_h - 610; end
+    	else if (counter_h <= 'd770) begin counter_col <= 7; square_x <= counter_h - 690; end
+    	else if	(counter_h <= 'd850) begin counter_col <= 8; square_x <= counter_h - 770; end
+        else if (counter_h <= 'd1010) begin counter_col <= 9; square_x <= counter_h - 850; end
+        else                          begin counter_col <= 10; square_x <= counter_h - 1010; end //아무 의미 없음
     end
 
     always @(counter_v) begin
-    	if 	    (counter_v <=  90) begin counter_row <= 0; square_y <= counter_v - 40; end
-    	else if (counter_v <= 140) begin counter_row <= 1; square_y <= counter_v - 90; end
-    	else if (counter_v <= 190) begin counter_row <= 2; square_y <= counter_v - 140; end
-    	else if (counter_v <= 240) begin counter_row <= 3; square_y <= counter_v - 190; end
-    	else if (counter_v <= 290) begin counter_row <= 4; square_y <= counter_v - 240; end
-    	else if (counter_v <= 340) begin counter_row <= 5; square_y <= counter_v - 290; end
-    	else if (counter_v <= 390) begin counter_row <= 6; square_y <= counter_v - 340; end
-    	else 					   begin counter_row <= 7; square_y <= counter_v - 390; end
+        if (counter_v <= 22) begin counter_row <= 0; square_y <= counter_v; end
+    	else if (counter_v <= 102) begin counter_row <= 1; square_y <= counter_v - 22; end
+    	else if (counter_v <= 182) begin counter_row <= 2; square_y <= counter_v - 102; end
+    	else if (counter_v <= 262) begin counter_row <= 3; square_y <= counter_v - 182; end
+    	else if (counter_v <= 342) begin counter_row <= 4; square_y <= counter_v - 262; end
+    	else if (counter_v <= 422) begin counter_row <= 5; square_y <= counter_v - 342; end
+    	else if (counter_v <= 502) begin counter_row <= 6; square_y <= counter_v - 422; end
+        else                       begin counter_row <= 7; square_y <= counter_v - 502; end //아무 의미 없음
     end
 
     always @(square_x) begin
@@ -112,7 +114,15 @@ module display_module {
     	else 				     art_y <= 7;	
     end
 
-    assign 
+    assign in_square_borer = ((counter_col == 0 && square_x <= 3) || (counter_col == 0 && square_x >= 77) ||
+                              (counter_col == 1 && counter_row == 0 && square_x <= 3) || (counter_col == 1 && counter_row == 0 && square_x >= 77) ||
+                              (counter_col == 2 && counter_row == 0 && square_x <= 3) || (counter_col == 2 && counter_row == 0 && square_x >= 77) ||
+                              (counter_col == 3 && counter_row == 0 && square_x <= 3) || (counter_col == 3 && counter_row == 0 && square_x >= 77) ||
+                              (counter_col == 4 && counter_row == 0 && square_x <= 3) || (counter_col == 4 && counter_row == 0 && square_x >= 77) ||
+                              (counter_col == 5 && counter_row == 0 && square_x <= 3) || (counter_co2 == 5 && counter_row == 0 && square_x >= 77) ||
+                              (counter_col == 6 && counter_row == 0 && square_x <= 3) || (counter_co2 == 6 && counter_row == 0 && square_x >= 77) ||
+                              (counter_col == 7 && square_x <= 3) || (counter_col == 7 && square_x >= 77) ||
+                              (counter_col == 8 && square_x <= 3) || (counter_col == 8 && square_x
 
     always @ (posedge rst or posedge clk) begin
         if (rst) begin
