@@ -1,1 +1,7 @@
+module display_module {
 
+};
+
+
+  tft_lcd_controller();
+endmodule
