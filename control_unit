@@ -33,20 +33,6 @@ module control_unit(
                         M <= 3'b010;
                     end
                 3'b010:
-                    if(N==2)
-                    p1_cnt=5'b00000;
-                    p2_cnt=5'b01100;
-                    else if(N==3)
-                        p1_cnt=5'b00000;
-                        p2_cnt=5'b01000;
-                        p3_cnt=5'b10000;
-                    else if(N==4)
-                        p1_cnt=5'b00000;
-                        p1_cnt=5'b00110;
-                        p1_cnt=5'b01100;
-                        p1_cnt=5'b11000;
-                    // initialize positions of each player
-                    T<=2'b00;
                     M <= M + 3'b001;
                 3'b011:
                     if(key == 0) begin
