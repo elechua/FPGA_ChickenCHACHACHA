@@ -16,16 +16,10 @@ module control_unit(
                 B=0;
             case(M)
                 3'b000:
-                    if(c == 0) begin
-                        M <= 3'b000;
-                    end
-                    else if(c == 1) begin
-                        M <= 3'b001;
-                    end
+                    if(c == 0) M <= 3'b000;
+                    else if(c == 1) M <= 3'b001;
                 3'b001:
-                    if(key == 4'hf) begin
-                        M <= 3'b001;
-                    end
+                    if(key == 4'hf) M <= 3'b001;
                     else begin
                         N=key;
                         M <= 3'b010;
@@ -43,25 +37,16 @@ module control_unit(
                     end
                 3'b100:
                     A <= 0;
-                    // 뒤집은 숫자 아래 register에 저장
-                    if(go == 0) begin
-                        M <= 3'b101;
-                    end
-                    else if(go == 1) begin
-                        M <= 3'b110;
-                    end
+                    if(go == 0) M <= 3'b101;
+                    else if(go == 1) M <= 3'b110;
                 3'b101:
                     M <= 3'b011;
                 3'b110:
-                    if(win == 0) begin
-                        M <= 3'b011;
-                    end
-                    else if(win == 1) begin
-                        M <= 3'b111;
-                    end
+                    if(win == 0) M <= 3'b011;
+                    else if(win == 1) M <= 3'b111;
                 3'b111:
                     //logic for state 3'b111
             endcase
         end
-        end
-    endmodule
+    end
+endmodule
