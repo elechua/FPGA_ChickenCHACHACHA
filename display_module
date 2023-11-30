@@ -25,7 +25,12 @@ module display_module {
     localparam TILE_FORESTGREEN = 4'b1010;
     localparam TILE_GRAY = 4'b1011;
     
-    
+    localparam BOARD_BLACK = 1;
+    localparam BOARD_BROWN = 0;
+
+    //edgetile 74*74px
+
+    localparam TILE_RED_ART = 
 
     always @ (posedge rst or posedge clk) begin
         if (rst) begin
