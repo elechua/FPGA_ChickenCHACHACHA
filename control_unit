@@ -25,7 +25,7 @@ module control_unit(
                         M <= 3'b001;
                     end
                 3'b001:
-                    if(key == 0) begin
+                    if(key == 4'hf) begin
                         M <= 3'b001;
                     end
                     else begin
@@ -40,8 +40,6 @@ module control_unit(
                         M <= 3'b011;
                     end
                     else begin
-                    data_memory(clk, 1, [4-1:0] ADDR, [4-1:0] DATA_IN, [4-1:0] DATA_OUT);
-                        // player 한칸 앞 값 register에 저장
                         A <= 1;
                         M <= 3'b100;
                     end
@@ -55,7 +53,6 @@ module control_unit(
                         M <= 3'b110;
                     end
                 3'b101:
-                    T <= T + 2'b01;
                     M <= 3'b011;
                 3'b110:
                     if(win == 0) begin
