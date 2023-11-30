@@ -8,10 +8,10 @@ module next_turn(
 
     always @ (posedge clk) begin
         case (N)
-            2'b00: if (statecombo_next_turn == 1) {
+            2'b00: if (statecombo_next_turn == 1) begin
                 if (T == 2'b00) T = 2'b01;
                 else if (T == 2'b01) T = 2'b00;
-            }
+            end
             2'b01: if (statecombo_next_turn == 1)
             2'b10: if (statecombo_next_turn == 1)
         endcase
