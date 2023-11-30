@@ -30,18 +30,18 @@ module display_module {
 
     //edgetile 70*70px
 
-    localparam TILE_RED_ART [70-1:0][70-1:0] = ;
-    localparam TILE_RED_ART [70-1:0][70-1:0] = ;
-    localparam TILE_RED_ART [70-1:0][70-1:0] = ;
-    localparam TILE_RED_ART [70-1:0][70-1:0] = ;
-    localparam TILE_RED_ART [74-1:0][74-1:0] = ;
-    localparam TILE_RED_ART [74-1:0][74-1:0] = ;
-    localparam TILE_RED_ART [74-1:0][74-1:0] = ;
-    localparam TILE_RED_ART [74-1:0][74-1:0] = ;
-    localparam TILE_RED_ART [74-1:0][74-1:0] = ;
-    localparam TILE_RED_ART [74-1:0][74-1:0] = ;
-    localparam TILE_RED_ART [74-1:0][74-1:0] = ;
-    localparam TILE_RED_ART [74-1:0][74-1:0] = ;
+    localparam RGB_TILE_RED_ART [24-1:0] = ;
+    localparam RGB_TILE_RED_ART [24-1:0] = ;
+    localparam RGB_TILE_RED_ART [24-1:0] = ;
+    localparam RGB_TILE_RED_ART [24-1:0] = ;
+    localparam RGB_TILE_RED_ART [24-1:0] = ;
+    localparam RGB_TILE_RED_ART [24-1:0] = ;
+    localparam RGB_TILE_RED_ART [24-1:0] = ;
+    localparam RGB_TILE_RED_ART [24-1:0] = ;
+    localparam RGB_TILE_RED_ART [24-1:0] = ;
+    localparam RGB_TILE_RED_ART [24-1:0] = ;
+    localparam RGB_TILE_RED_ART [24-1:0] = ;
+    localparam RGB_TILE_RED_ART [24-1:0] = ;
 
     localparam TILE_ONE_ART [74-1:0][74-1:0] = ;
     localparam TILE_TWO_ART [74-1:0][74-1:0] = ;
@@ -114,15 +114,35 @@ module display_module {
     	else 				     art_y <= 7;	
     end
 
-    assign in_square_borer = ((counter_col == 0 && square_x <= 3) || (counter_col == 0 && square_x >= 77) ||
-                              (counter_col == 1 && counter_row == 0 && square_x <= 3) || (counter_col == 1 && counter_row == 0 && square_x >= 77) ||
-                              (counter_col == 2 && counter_row == 0 && square_x <= 3) || (counter_col == 2 && counter_row == 0 && square_x >= 77) ||
-                              (counter_col == 3 && counter_row == 0 && square_x <= 3) || (counter_col == 3 && counter_row == 0 && square_x >= 77) ||
-                              (counter_col == 4 && counter_row == 0 && square_x <= 3) || (counter_col == 4 && counter_row == 0 && square_x >= 77) ||
-                              (counter_col == 5 && counter_row == 0 && square_x <= 3) || (counter_co2 == 5 && counter_row == 0 && square_x >= 77) ||
-                              (counter_col == 6 && counter_row == 0 && square_x <= 3) || (counter_co2 == 6 && counter_row == 0 && square_x >= 77) ||
-                              (counter_col == 7 && square_x <= 3) || (counter_col == 7 && square_x >= 77) ||
-                              (counter_col == 8 && square_x <= 3) || (counter_col == 8 && square_x
+    assign in_border = ((counter_col == 1 && square_x <= 3) || (counter_col == 0 && square_x >= 77) ||
+                              (counter_col == 2 && counter_row == 1 && square_x <= 3) || (counter_col == 2 && counter_row == 1 && square_x >= 77) ||
+                              (counter_col == 2 && counter_row == 6 && square_x <= 3) || (counter_col == 2 && counter_row == 6 && square_x >= 77) ||
+                              (counter_col == 3 && counter_row == 1 && square_x <= 3) || (counter_col == 3 && counter_row == 1 && square_x >= 77) ||
+                              (counter_col == 3 && counter_row == 6 && square_x <= 3) || (counter_col == 3 && counter_row == 6 && square_x >= 77) ||
+                              (counter_col == 4 && counter_row == 1 && square_x <= 3) || (counter_col == 4 && counter_row == 1 && square_x >= 77) ||
+                              (counter_col == 4 && counter_row == 6 && square_x <= 3) || (counter_col == 4 && counter_row == 6 && square_x >= 77) ||
+                              (counter_col == 5 && counter_row == 1 && square_x <= 3) || (counter_col == 5 && counter_row == 1 && square_x >= 77) ||
+                              (counter_col == 5 && counter_row == 6 && square_x <= 3) || (counter_col == 5 && counter_row == 6 && square_x >= 77) ||
+                              (counter_col == 6 && counter_row == 1 && square_x <= 3) || (counter_co2 == 6 && counter_row == 1 && square_x >= 77) ||
+                              (counter_col == 6 && counter_row == 6 && square_x <= 3) || (counter_col == 6 && counter_row == 6 && square_x >= 77) ||
+                              (counter_col == 7 && counter_row == 1 && square_x <= 3) || (counter_co2 == 7 && counter_row == 1 && square_x >= 77) ||
+                              (counter_col == 7 && counter_row == 6 && square_x <= 3) || (counter_col == 7 && counter_row == 6 && square_x >= 77) ||
+                              (counter_col == 8 && square_x <= 3) || (counter_col == 8 && square_x >= 77) ||
+                              (counter_col == 9 && square_x <= 3) || (counter_col == 9 && square_x >= 74) ||
+                              (counter_row == 1 && square_y <= 3) || (counter_row == 1 && square_y >= 77) ||
+                              (counter_row == 2 && counter_col == 1 && square_y <= 3) || (counter_row == 2 && counter_col == 1 && square_y <= 77) ||
+                              (counter_row == 2 && counter_col == 8 && square_y <= 3) || (counter_row == 2 && counter_col == 8 && square_y <= 77) ||
+                              (counter_row == 3 && counter_col == 1 && square_y <= 3) || (counter_row == 3 && counter_col == 1 && square_y <= 77) ||
+                              (counter_row == 3 && counter_col == 8 && square_y <= 3) || (counter_row == 3 && counter_col == 8 && square_y <= 77) ||
+                              (counter_row == 4 && counter_col == 1 && square_y <= 3) || (counter_row == 4 && counter_col == 1 && square_y <= 77) ||
+                              (counter_row == 4 && counter_col == 8 && square_y <= 3) || (counter_row == 4 && counter_col == 8 && square_y <= 77) ||
+                              (counter_row == 5 && counter_col == 1 && square_y <= 3) || (counter_row == 5 && counter_col == 1 && square_y <= 77) ||
+                              (counter_row == 5 && counter_col == 8 && square_y <= 3) || (counter_row == 5 && counter_col == 8 && square_y <= 77) ||
+                              (counter_row == 6 && square_y <= 3) || (counter_row == 6 && square_y <= 77) ||);
+
+    assign in_board = (counter_h >= 'd210 && counter_h <= 'd810) && (counter_v >= 'd22 && counter_v <='d502);
+
+    always
 
     always @ (posedge rst or posedge clk) begin
         if (rst) begin
