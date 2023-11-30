@@ -15,7 +15,7 @@ module check_same(
         end
     end
     
-    always @ (edge_tile, center_tile) begin
+    always @ (edge_tile or center_tile) begin
         if (edge_tile == center_tile) begin
             result = 1;
         end
