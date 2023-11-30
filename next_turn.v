@@ -14,8 +14,6 @@ module next_turn(
                 if (T == 2'b00) T = 2'b01;
                 else if (T == 2'b01) T = 2'b00;
             end
-            else if (statecombo_next_turn == 0 )
-                T = T;
             2'b01: if (statecombo_next_turn == 1)
             2'b10: if (statecombo_next_turn == 1)
         endcase
