@@ -2,8 +2,9 @@ module control_unit(
     input CLK, c, [3:0] key, go, win,
     output reg A, B
     output reg [3:0] N;
+    output reg [2:0] M;
     );  
-    reg [2:0] M;
+
     reg [1:0] T;
 
     always @(posedge CLK) begin
