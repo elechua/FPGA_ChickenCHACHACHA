@@ -30,5 +30,4 @@ module next_turn(
     end
     assign result = T;
     // Q가 101에서 110으로 바뀌는 때가
-    );
 endmodule
