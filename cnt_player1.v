@@ -1,10 +1,10 @@
 module cnt_player1(
-    input clk, rst,
+    input B, rst,
     input [4-1:0] N,
     input p_da1,
     output reg [5-1:0] p1_cnt
 );
-    always @ (posedge clk) begin
+    always @ (posedge B) begin
         if (posedge rst) begin
             if(N==2)
                 p1_cnt=5'b00000;
