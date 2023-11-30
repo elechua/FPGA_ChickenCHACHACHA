@@ -27,11 +27,11 @@ module control_unit(
             3'b010:
                 M <= M + 3'b001;
             3'b011:
+                A <= 1;
                 if(key == 0) begin
                     M <= 3'b011;
                 end
                 else if(key == 1) begin
-                    A <= 1;
                     M <= 3'b100;
                 end
             3'b100:
