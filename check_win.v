@@ -8,7 +8,6 @@ module check_win(
     );
     
     wire da1, da2, da3, da4;
-    wire stop_increase;
     wire [5-1:0] p1_cnt, p2_cnt, p3_cnt, p4_cnt;
     wire [5-1:0] out1, out2;
     wire [5-1:0] pos_data;
