@@ -4,8 +4,8 @@ module cnt_player1(
     input p_da1,
     output reg [5-1:0] p1_cnt
 );
-    always @ (posedge B) begin
-        if (posedge rst) begin
+    always @ (posedge B or posedge rst) begin
+        if (rst) begin
             if(N==2)
                 p1_cnt=5'b00000;
                 p2_cnt=5'b01100;
