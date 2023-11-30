@@ -1,7 +1,40 @@
 module display_module {
-
+    input clk, rst,
+    input board,
+    output den, hsync, vsync, 
+    output reg [8-1:0] R, G, B
+    output dclk, disp_en
 };
+    wire [11-1:0] counter_h;
+    wire [10-1:0] counter_v;
+    tft_lcd_controller ctl(.clk(clk), .rst(rst), .counter_h(counter_h), .counter_v(counter_v), .disp_den(den), .disp_hsync(hsync), .disp_vsync(vsync), .disp_clk(dclk), .disp_enb(disp_en));
 
+    reg [7:0] output_color;
+    wire inDisplayArea;
 
-  tft_lcd_controller();
+    localparam TILE_RED = 4'b0000;
+    localparam TILE_ORANGE = 4'b0001;
+    localparam TILE_YELLOW = 4'b0010;
+    localparam TILE_GREEN = 4'b0011;
+    localparam TILE_BLUE = 4'b0100;
+    localparam TILE_NAVY = 4'b0101;
+    localparam TILE_PURPLE = 4'b0110;
+    localparam TILE_WHITE = 4'b0111;
+    localparam TILE_BLACK = 4'b1000;
+    localparam TILE_SKYBLUE = 4'b1001;
+    localparam TILE_FORESTGREEN = 4'b1010;
+    localparam TILE_GRAY = 4'b1011;
+    
+    
+
+    always @ (posedge rst or posedge clk) begin
+        if (rst) begin
+            R = 8'd0;
+            G = 8'd0;
+            B = 8'd0;
+        end
+        else begin
+            if (
+
+    
 endmodule
