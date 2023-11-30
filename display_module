@@ -34,7 +34,7 @@ module display_module {
 
     //edgetile 70*70px
 
-    localparam RGB_TILE_RED_ART [24-1:0] = {8d255, 8'd0, 8'd0};
+    localparam RGB_TILE_RED_ART [24-1:0] = {8'd255, 8'd0, 8'd0};
     localparam RGB_TILE_ORANGE_ART [24-1:0] = 24'b00000000_00000000_00000000;
     localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
     localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
@@ -42,7 +42,7 @@ module display_module {
     localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
     localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
     localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
-    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
+    localparam RGB_TILE_BLACK_ART [24-1:0] = {8'd0, 8'd0, 8'd0};
     localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
     localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
     localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
@@ -146,13 +146,19 @@ module display_module {
 
     assign in_board = (counter_h >= 'd210 && counter_h <= 'd810) && (counter_v >= 'd22 && counter_v <='d502);
 
-    always
+    always @ (posedge clk or posedge rst) begin
+        if(rst) output_color <= {8'd0, 8'd0, 8'd0};
+        else begin
+            if (in_square_border) begin
+                output_color <= {8'd255, 8'd255, 8'd255};
+            else begin
+                if (
+
+        end
+    end
 
     always @ (posedge rst or posedge clk) begin
-        if (rst) begin
-            R = 8'd0;
-            G = 8'd0;
-            B = 8'd0;
+    
         end
         else begin
             if (
