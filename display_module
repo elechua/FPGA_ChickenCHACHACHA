@@ -12,6 +12,10 @@ module display_module {
     reg [7:0] output_color;
     wire inDisplayArea;
 
+    assign R = output_color[23:16];
+    assign G = output_color[15:8];
+    assign B = output_color[7:0];
+
     localparam TILE_RED = 4'b0000;
     localparam TILE_ORANGE = 4'b0001;
     localparam TILE_YELLOW = 4'b0010;
@@ -30,18 +34,18 @@ module display_module {
 
     //edgetile 70*70px
 
-    localparam RGB_TILE_RED_ART [24-1:0] = ;
-    localparam RGB_TILE_RED_ART [24-1:0] = ;
-    localparam RGB_TILE_RED_ART [24-1:0] = ;
-    localparam RGB_TILE_RED_ART [24-1:0] = ;
-    localparam RGB_TILE_RED_ART [24-1:0] = ;
-    localparam RGB_TILE_RED_ART [24-1:0] = ;
-    localparam RGB_TILE_RED_ART [24-1:0] = ;
-    localparam RGB_TILE_RED_ART [24-1:0] = ;
-    localparam RGB_TILE_RED_ART [24-1:0] = ;
-    localparam RGB_TILE_RED_ART [24-1:0] = ;
-    localparam RGB_TILE_RED_ART [24-1:0] = ;
-    localparam RGB_TILE_RED_ART [24-1:0] = ;
+    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
+    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
+    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
+    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
+    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
+    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
+    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
+    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
+    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
+    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
+    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
+    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
 
     localparam TILE_ONE_ART [74-1:0][74-1:0] = ;
     localparam TILE_TWO_ART [74-1:0][74-1:0] = ;
