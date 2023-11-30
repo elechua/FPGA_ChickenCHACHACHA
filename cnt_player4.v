@@ -1,6 +1,6 @@
 module cnt_player4(
     input B, rst,
-    input [4-1:0] N,
+    input [5-1:0] N,
     input p_da4,
     output reg [5-1:0] p4_cnt
 );
