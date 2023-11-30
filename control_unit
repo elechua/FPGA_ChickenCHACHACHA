@@ -1,13 +1,10 @@
 module control_unit(
     input CLK, c, [3:0] key, go, win,
     output reg A, B
+    output reg [3:0] N;
     );  
     reg [2:0] M;
     reg [1:0] T;
-    reg [3:0] N; // 00, 01, 10
-    reg [5-1:0] p1_cnt;
-    reg [5-1:0] p2_cnt;
-    reg [5-1:0] p3_cnt;
 
     always @(posedge CLK) begin
         if(M=3'b110)
