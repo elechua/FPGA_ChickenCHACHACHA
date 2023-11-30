@@ -34,8 +34,8 @@ module display_module {
 
     //edgetile 70*70px
 
-    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
-    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
+    localparam RGB_TILE_RED_ART [24-1:0] = {8d255, 8'd0, 8'd0};
+    localparam RGB_TILE_ORANGE_ART [24-1:0] = 24'b00000000_00000000_00000000;
     localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
     localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
     localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
