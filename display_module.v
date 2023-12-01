@@ -1,15 +1,15 @@
-module display_module {
+module display_module(
     input clk, rst,
     input board,
     output den, hsync, vsync, 
-    output reg [8-1:0] R, G, B
+    output reg [8-1:0] R, G, B,
     output dclk, disp_en
-};
+);
     wire [11-1:0] counter_h;
     wire [10-1:0] counter_v;
     tft_lcd_controller ctl(.clk(clk), .rst(rst), .counter_h(counter_h), .counter_v(counter_v), .disp_den(den), .disp_hsync(hsync), .disp_vsync(vsync), .disp_clk(dclk), .disp_enb(disp_en));
 
-    reg [7:0] output_color;
+    reg [24-1:0] output_color;
     wire inDisplayArea;
 
     assign R = output_color[23:16];
@@ -32,22 +32,23 @@ module display_module {
     localparam BOARD_BLACK = 1;
     localparam BOARD_BROWN = 0;
 
-    //edgetile 70*70px
+    //edgetile 74*74px
+    localparam [24-1:0] RGB_TILE_RED_ART = {8'd255, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_ORANGE_ART = {8'd255, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_YELLOW_ART = {8'd255, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_GREEN_ART = {8'd255, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_BLUE_ART = {8'd255, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_NAVY_ART = {8'd255, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_PURPLE_ART = {8'd255, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_WHITE_ART = {8'd255, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_BLACK_ART = {8'd255, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_SKYBLUE_ART = {8'd255, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_FORESTGREEN_ART = {8'd255, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_GRAY_ART = {8'd255, 8'd0, 8'd0};
 
-    localparam RGB_TILE_RED_ART [24-1:0] = {8'd255, 8'd0, 8'd0};
-    localparam RGB_TILE_ORANGE_ART [24-1:0] = 24'b00000000_00000000_00000000;
-    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
-    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
-    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
-    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
-    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
-    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
-    localparam RGB_TILE_BLACK_ART [24-1:0] = {8'd0, 8'd0, 8'd0};
-    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
-    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
-    localparam RGB_TILE_RED_ART [24-1:0] = 24'b00000000_00000000_00000000;
-
-    localparam TILE_ONE_ART [74-1:0][74-1:0] = ;
+    localparam [74-1:0] TILE_ONE_ART [74-1:0] = {
+            74'b0000000000_0000000000_0000000000_0000000000_0000000000_0000000000_0000000000_0000,
+            74'b0000000000_0000000000_0000000000_0000000000_0000000000_0000000000_0000000000_0000
     localparam TILE_TWO_ART [74-1:0][74-1:0] = ;
     localparam TILE_THREE_ART [74-1:0][74-1:0] = ;
     localparam TILE_FOUR_ART [74-1:0][74-1:0] = ;
@@ -64,8 +65,8 @@ module display_module {
     localparam RGB_RIGHTEDGE = 8'b;
     localparam RGB_GAPSPACE = 8'b;
 
-    reg [2:0] counter_row; // the square the pixels are currently on
-    reg [2:0] counter_col;
+    reg [3-1:0] counter_row; // the square the pixels are currently on
+    reg [4-1:0] counter_col;
     reg [6:0] square_x; // coords of the counter within the board square
     reg [6:0] square_y;
     reg [4:0] art_x; // coords on 8x8 artwork grid within the square
@@ -73,27 +74,27 @@ module display_module {
 
     always @(counter_h) begin
         if (counter_h <= 'd210) begin counter_col <= 0; square_x <= counter_h; end
-    	else if (counter_h <= 'd290) begin counter_col <= 1; square_x <= counter_h - 210; end
-    	else if (counter_h <= 'd370) begin counter_col <= 2; square_x <= counter_h - 290; end
-    	else if (counter_h <= 'd450) begin counter_col <= 3; square_x <= counter_h - 370; end
-    	else if (counter_h <= 'd530) begin counter_col <= 4; square_x <= counter_h - 450; end
-    	else if (counter_h <= 'd610) begin counter_col <= 5; square_x <= counter_h - 530; end
-    	else if (counter_h <= 'd690) begin counter_col <= 6; square_x <= counter_h - 610; end
-    	else if (counter_h <= 'd770) begin counter_col <= 7; square_x <= counter_h - 690; end
-    	else if	(counter_h <= 'd850) begin counter_col <= 8; square_x <= counter_h - 770; end
-        else if (counter_h <= 'd1010) begin counter_col <= 9; square_x <= counter_h - 850; end
-        else                          begin counter_col <= 10; square_x <= counter_h - 1010; end //아무 의미 없음
+    	else if (counter_h <= 'd290) begin counter_col <= 1; square_x <= counter_h - 'd210; end
+    	else if (counter_h <= 'd370) begin counter_col <= 2; square_x <= counter_h - 'd290; end
+    	else if (counter_h <= 'd450) begin counter_col <= 3; square_x <= counter_h - 'd370; end
+    	else if (counter_h <= 'd530) begin counter_col <= 4; square_x <= counter_h - 'd450; end
+    	else if (counter_h <= 'd610) begin counter_col <= 5; square_x <= counter_h - 'd530; end
+    	else if (counter_h <= 'd690) begin counter_col <= 6; square_x <= counter_h - 'd610; end
+    	else if (counter_h <= 'd770) begin counter_col <= 7; square_x <= counter_h - 'd690; end
+    	else if	(counter_h <= 'd850) begin counter_col <= 8; square_x <= counter_h - 'd770; end
+        else if (counter_h <= 'd1010) begin counter_col <= 9; square_x <= counter_h - 'd850; end
+        else                          begin counter_col <= 10; square_x <= counter_h - 'd1010; end //아무 의미 없음
     end
 
     always @(counter_v) begin
-        if (counter_v <= 22) begin counter_row <= 0; square_y <= counter_v; end
-    	else if (counter_v <= 102) begin counter_row <= 1; square_y <= counter_v - 22; end
-    	else if (counter_v <= 182) begin counter_row <= 2; square_y <= counter_v - 102; end
-    	else if (counter_v <= 262) begin counter_row <= 3; square_y <= counter_v - 182; end
-    	else if (counter_v <= 342) begin counter_row <= 4; square_y <= counter_v - 262; end
-    	else if (counter_v <= 422) begin counter_row <= 5; square_y <= counter_v - 342; end
-    	else if (counter_v <= 502) begin counter_row <= 6; square_y <= counter_v - 422; end
-        else                       begin counter_row <= 7; square_y <= counter_v - 502; end //아무 의미 없음
+        if (counter_v <= 'd22) begin counter_row <= 0; square_y <= counter_v; end
+    	else if (counter_v <= 'd102) begin counter_row <= 1; square_y <= counter_v - 'd22; end
+    	else if (counter_v <= 'd182) begin counter_row <= 2; square_y <= counter_v - 'd102; end
+    	else if (counter_v <= 'd262) begin counter_row <= 3; square_y <= counter_v - 'd182; end
+    	else if (counter_v <= 'd342) begin counter_row <= 4; square_y <= counter_v - 'd262; end
+    	else if (counter_v <= 'd422) begin counter_row <= 5; square_y <= counter_v - 'd342; end
+    	else if (counter_v <= 'd502) begin counter_row <= 6; square_y <= counter_v - 'd422; end
+        else                       begin counter_row <= 7; square_y <= counter_v - 'd502; end //아무 의미 없음
     end
 
     always @(square_x) begin
@@ -118,7 +119,7 @@ module display_module {
     	else 				     art_y <= 7;	
     end
 
-    assign in_border = ((counter_col == 1 && square_x <= 3) || (counter_col == 0 && square_x >= 77) ||
+    assign in_border = ((counter_col == 1 && square_x <= 3) || (counter_col == 1 && square_x >= 77) ||
                               (counter_col == 2 && counter_row == 1 && square_x <= 3) || (counter_col == 2 && counter_row == 1 && square_x >= 77) ||
                               (counter_col == 2 && counter_row == 6 && square_x <= 3) || (counter_col == 2 && counter_row == 6 && square_x >= 77) ||
                               (counter_col == 3 && counter_row == 1 && square_x <= 3) || (counter_col == 3 && counter_row == 1 && square_x >= 77) ||
@@ -142,26 +143,18 @@ module display_module {
                               (counter_row == 4 && counter_col == 8 && square_y <= 3) || (counter_row == 4 && counter_col == 8 && square_y <= 77) ||
                               (counter_row == 5 && counter_col == 1 && square_y <= 3) || (counter_row == 5 && counter_col == 1 && square_y <= 77) ||
                               (counter_row == 5 && counter_col == 8 && square_y <= 3) || (counter_row == 5 && counter_col == 8 && square_y <= 77) ||
-                              (counter_row == 6 && square_y <= 3) || (counter_row == 6 && square_y <= 77) ||);
+                              (counter_row == 6 && square_y <= 3) || (counter_row == 6 && square_y <= 77));
 
     assign in_board = (counter_h >= 'd210 && counter_h <= 'd810) && (counter_v >= 'd22 && counter_v <='d502);
 
     always @ (posedge clk or posedge rst) begin
         if(rst) output_color <= {8'd0, 8'd0, 8'd0};
         else begin
-            if (in_square_border) begin
+            if (in_border) begin
                 output_color <= {8'd255, 8'd255, 8'd255};
             else begin
                 if (
 
         end
     end
-
-    always @ (posedge rst or posedge clk) begin
-    
-        end
-        else begin
-            if (
-
-    
 endmodule
