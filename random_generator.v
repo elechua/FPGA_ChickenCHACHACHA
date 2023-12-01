@@ -1,4 +1,5 @@
 module random_generator(
+    input rst,
     output reg [96-1:0] random_edge_order
     output reg [48-1:0] random_center_order
 );
