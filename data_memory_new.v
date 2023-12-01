@@ -5,9 +5,9 @@ module data_memory_new(
     input [60-1:0] CENTER_DATA_IN,
     input [4-1:0] DATA_OUT
     );
-    reg [4-1:0] SRAM [16-1:0];
+    reg [5-1:0] SRAM [36-1:0];
     inital begin
-
+        SRAM[0]
     end
 
     
