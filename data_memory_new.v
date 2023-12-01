@@ -7,7 +7,7 @@ module data_memory_new(
     );
     reg [4-1:0] SRAM [36-1:0];
     inital begin
-        SRAM[5]
+        SRAM[0] = EDGE_DATA_IN[95:92];
     end
 
     
