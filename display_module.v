@@ -195,7 +195,7 @@ module display_module(
     end
 
     assign in_border = (square_x<=2 || square_x>=78 || square_y <=2 || square_y >=78);
-    assign in_board = (square_x >= 3 && square_x <= 77 && square_y >= 3 && square_y <= 77);
+    assign in_board = (square_x >= 2 && square_x <= 78 && square_y >= 2 && square_y <= 78);
 
     always @ (posedge clk or posedge rst) begin
         if(rst) output_color <= {8'd0, 8'd0, 8'd0};
