@@ -32,7 +32,7 @@ module random_generator(
 
     end
 
-    always @ (*) begin
+    always @ (posedge rst) begin
         if (rst)
             random_number <= $urandom % 10;
     end
