@@ -32,9 +32,9 @@ module random_generator(
 
     end // 첫번째 6bit 첫번째 그림 위치. 두번째 6비트 두번째 그림 위치 등으로 하면 될거같은데
 
-    random_number <= $urandom % 10;  // random number (0-9)
+    assign random_number <= $urandom % 10;  // random number (0-9)
 
-    random_edge_order <= edge_order[random_number];
-    random_center_order <= center_order[random_number];
+    assign random_edge_order <= edge_order[random_number];
+    assign random_center_order <= center_order[random_number];
 endmodule
 
