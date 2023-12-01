@@ -3,7 +3,6 @@ module random_generator(
     output reg [96-1:0] random_edge_order
     output reg [48-1:0] random_center_order
 );
-    // 각 타일 위치를 몇비트로 설정하지 -> 5 bit => 24*5=120 bit?
     reg [96-1:0] edge_orders [0:9]  // 일단은 10개만 
     reg [48-1:0] center_orders [0:9]
     reg [4:0] random_number;  // random number (0-9)
@@ -31,11 +30,15 @@ module random_generator(
         center_orders[8] = 48'b0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000;
         center_orders[9] = 48'b0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000;
 
-    end // 첫번째 6bit 첫번째 그림 위치. 두번째 6비트 두번째 그림 위치 등으로 하면 될거같은데
+    end
 
-    assign random_number <= $urandom % 10;  // random number (0-9)
+    always @ (*) begin
+        if (rst)
+            random_number <= $urandom % 10;
+    end
 
     assign random_edge_order <= edge_order[random_number];
     assign random_center_order <= center_order[random_number];
+    
 endmodule
 
