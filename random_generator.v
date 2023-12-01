@@ -1,10 +1,10 @@
 module random_generator(
-    output reg [120-1:0] random_edge_order
-    output reg [60-1:0] random_center_order
+    output reg [96-1:0] random_edge_order
+    output reg [48-1:0] random_center_order
 );
     // 각 타일 위치를 몇비트로 설정하지 -> 5 bit => 24*5=120 bit?
-    reg [120-1:0] edge_orders [0:9]  // 일단은 10개만 
-    reg [120-1:0] center_orders [0:9]
+    reg [96-1:0] edge_orders [0:9]  // 일단은 10개만 
+    reg [48-1:0] center_orders [0:9]
     reg [4:0] random_number;  // random number (0-9)
     
     initial begin
