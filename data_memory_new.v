@@ -7,7 +7,7 @@ module data_memory_new(
     );
     reg [5-1:0] SRAM [36-1:0];
     inital begin
-        SRAM[0]
+        SRAM[5]
     end
 
     
