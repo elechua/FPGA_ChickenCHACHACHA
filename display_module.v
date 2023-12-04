@@ -1,5 +1,6 @@
 module display_module(
     input clk, rst,
+    input [4-1:0] P1_pos, P2_pos, P3_pos, P4_pos,
     input board,
     output den, hsync, vsync, 
     output [8-1:0] R, G, B,
@@ -195,17 +196,55 @@ module display_module(
         TILE_ONE_ART[7] = 8'b00000000;
     end
 
-    reg [8-1:0] TILE_arrow_ART [8-1:0];
+    reg [8-1:0] TILE_NW_ARROW_ART [8-1:0];
     initial begin
         TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00010000;
-        TILE_ONE_ART[2] = 8'b00010000;
-        TILE_ONE_ART[3] = 8'b00010000;
-        TILE_ONE_ART[4] = 8'b00010000;
-        TILE_ONE_ART[5] = 8'b00010000;
+        TILE_ONE_ART[1] = 8'b00000000;
+        TILE_ONE_ART[2] = 8'b00000010;
+        TILE_ONE_ART[3] = 8'b00000010;
+        TILE_ONE_ART[4] = 8'b00100010;
+        TILE_ONE_ART[5] = 8'b01111110;
+        TILE_ONE_ART[6] = 8'b00100000;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+    
+    reg [8-1:0] TILE_NE_ARROW_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00100000;
+        TILE_ONE_ART[2] = 8'b01110000;
+        TILE_ONE_ART[3] = 8'b00100000;
+        TILE_ONE_ART[4] = 8'b00100000;
+        TILE_ONE_ART[5] = 8'b00100000;
+        TILE_ONE_ART[6] = 8'b00111100;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+
+    reg [8-1:0] TILE_SE_ARROW_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00000100;
+        TILE_ONE_ART[2] = 8'b01111110;
+        TILE_ONE_ART[3] = 8'b01000100;
+        TILE_ONE_ART[4] = 8'b01000000;
+        TILE_ONE_ART[5] = 8'b01000000;
         TILE_ONE_ART[6] = 8'b00000000;
         TILE_ONE_ART[7] = 8'b00000000;
     end
+
+    reg [8-1:0] TILE_SW_ARROW_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00111100;
+        TILE_ONE_ART[2] = 8'b00000100;
+        TILE_ONE_ART[3] = 8'b00000100;
+        TILE_ONE_ART[4] = 8'b00000100;
+        TILE_ONE_ART[5] = 8'b00001110;
+        TILE_ONE_ART[6] = 8'b00000100;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+
+    
     
     reg [3-1:0] counter_row; // the square the pixels are currently on
     reg [4-1:0] counter_col;
@@ -276,11 +315,95 @@ module display_module(
                     output_color <= {8'd255, 8'd255, 8'd255};
             end
             else if (in_board) begin
+                // 가운데 타일
+                // ROW 3 COL 2 ~ 7
+                // ROW 4 COL 2 ~ 7
+                //1
                 if (counter_row == 3 && counter_col == 2) begin
                     if (TILE_ONE_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
                     else output_color <= {8'd0, 8'd0, 8'd0};
                 end
-                else output_color <= {8'd0, 8'd0, 8'd0};
+                //2
+                else if (counter_row == 3 && counter_col == 3) begin
+                    if (TILE_TWO_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                //3
+                else if (counter_row == 3 && counter_col == 4) begin
+                    if (TILE_THREE_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                //4
+                else if (counter_row == 3 && counter_col == 5) begin
+                    if (TILE_FOUR_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                //5
+                else if (counter_row == 3 && counter_col == 6) begin
+                    if (TILE_FIVE_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                //6
+                else if (counter_row == 3 && counter_col == 7) begin
+                    if (TILE_SIX_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                //7
+                else if (counter_row == 4 && counter_col == 2) begin
+                    if (TILE_SEVEN_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                //8
+                else if (counter_row == 4 && counter_col == 3) begin
+                    if (TILE_EIGHT_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                //9
+                else if (counter_row == 4 && counter_col == 4) begin
+                    if (TILE_NINE_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                //0
+                else if (counter_row == 4 && counter_col == 5) begin
+                    if (TILE_ZERO_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                //#
+                else if (counter_row == 4 && counter_col == 6) begin
+                    if (TILE_SHARP_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                //*
+                else if (counter_row == 4 && counter_col == 7) begin
+                    if (TILE_STAR_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                //화살표 타일
+                //북서쪽
+                else if (counter_row == 2 && counter_col == 2) begin
+                    if (TILE_NW_ARROW_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                //북동쪽
+                else if (counter_row == 2 && counter_col == 7) begin
+                    if (TILE_NE_ARROW_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                //남동쪽
+                else if (counter_row == 5 && counter_col == 7) begin
+                    if (TILE_SE_ARROW_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                //남서쪽
+                else if (counter_row == 5 && counter_col == 2) begin
+                    if (TILE_SW_ARROW_ART[art_y][art_x]) output_color <= {8'd255, 8'd255, 8'd255};
+                    else output_color <= {8'd0, 8'd0, 8'd0};
+                end
+                
+                //외곽 타일
+                
+                
+                else  output_color <= {8'd0, 8'd0, 8'd0};
             end
             else begin
                 output_color <= {8'd000, 8'd000, 8'd000};
