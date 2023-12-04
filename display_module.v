@@ -1,5 +1,6 @@
 module display_module(
     input clk, rst,
+    input [96-1:0]edge_order, 
     input [4-1:0] P1_pos, P2_pos, P3_pos, P4_pos,
     input board,
     output den, hsync, vsync, 
@@ -8,6 +9,31 @@ module display_module(
 );
     wire [11-1:0] counter_h;
     wire [10-1:0] counter_v;
+    wire [3:0] edge_0_color,
+    edge_1_color,
+    edge_2_color,
+    edge_3_color,
+    edge_4_color,
+    edge_5_color,
+    edge_6_color,
+    edge_7_color,
+    edge_8_color,
+    edge_9_color,
+    edge_10_color,
+    edge_11_color,
+    edge_12_color,
+    edge_13_color,
+    edge_14_color,
+    edge_15_color,
+    edge_16_color,
+    edge_17_color,
+    edge_18_color,
+    edge_19_color,
+    edge_20_color,
+    edge_21_color,
+    edge_22_color,
+    edge_23_color;
+    
     tft_lcd_controller ctl(.clk(clk), .rst(rst), .counter_h(counter_h), .counter_v(counter_v), .disp_den(den), .disp_hsync(hsync), .disp_vsync(vsync), .disp_clk(dclk), .disp_enb(disp_en));
 
     reg [24-1:0] output_color;
@@ -16,6 +42,32 @@ module display_module(
     assign R = output_color[23:16];
     assign G = output_color[15:8];
     assign B = output_color[7:0];
+
+    assign edge_0_color = edge_order[95:92];
+    assign edge_1_color = edge_order[91:88];
+    assign edge_2_color = edge_order[87:84];
+    assign edge_3_color = edge_order[83:80];
+    assign edge_4_color = edge_order[79:76];
+    assign edge_5_color = edge_order[75:72];
+    assign edge_6_color = edge_order[71:68];
+    assign edge_7_color = edge_order[67:64];
+    assign edge_8_color = edge_order[63:60];
+    assign edge_9_color = edge_order[59:56];
+    assign edge_10_color = edge_order[55:52];
+    assign edge_11_color = edge_order[51:48];
+    assign edge_12_color = edge_order[47:44];
+    assign edge_13_color = edge_order[43:40];
+    assign edge_14_color = edge_order[39:36];
+    assign edge_15_color = edge_order[35:32];
+    assign edge_16_color = edge_order[31:28];
+    assign edge_17_color = edge_order[27:24];
+    assign edge_18_color = edge_order[23:20];
+    assign edge_19_color = edge_order[19:16];
+    assign edge_20_color = edge_order[15:12];
+    assign edge_21_color = edge_order[11:8];
+    assign edge_22_color = edge_order[7:4];
+    assign edge_23_color = edge_order[3:0];
+    
 
     localparam TILE_RED = 4'b0000;
     localparam TILE_ORANGE = 4'b0001;
@@ -253,6 +305,32 @@ module display_module(
     reg [4:0] art_x; // coords on 8x8 artwork grid within the square
     reg [4:0] art_y;
 
+    //외곽타일 matching    
+    wire edge_0 = (counter_low == 1 && counter_col == 1);
+    wire edge_1 = (counter_low == 1 && counter_col == 2);
+    wire edge_2 = (counter_low == 1 && counter_col == 3);
+    wire edge_3 = (counter_low == 1 && counter_col == 4);
+    wire edge_4 = (counter_low == 1 && counter_col == 5);
+    wire edge_5 = (counter_low == 1 && counter_col == 6);
+    wire edge_6 = (counter_low == 1 && counter_col == 7);
+    wire edge_7 = (counter_low == 1 && counter_col == 8);
+    wire edge_8 = (counter_low == 2 && counter_col == 8);
+    wire edge_9 = (counter_low == 3 && counter_col == 8);
+    wire edge_10 = (counter_low == 4 && counter_col == 8);
+    wire edge_11 = (counter_low == 5 && counter_col == 8);
+    wire edge_12 = (counter_low == 6 && counter_col == 8);
+    wire edge_13 = (counter_low == 6 && counter_col == 7);
+    wire edge_14 = (counter_low == 6 && counter_col == 6);
+    wire edge_15 = (counter_low == 6 && counter_col == 5);
+    wire edge_16 = (counter_low == 6 && counter_col == 4);
+    wire edge_17 = (counter_low == 6 && counter_col == 3);
+    wire edge_18 = (counter_low == 6 && counter_col == 2);
+    wire edge_19 = (counter_low == 6 && counter_col == 1);
+    wire edge_20 = (counter_low == 5 && counter_col == 1);
+    wire edge_21 = (counter_low == 4 && counter_col == 1);
+    wire edge_22 = (counter_low == 3 && counter_col == 1);
+    wire edge_23 = (counter_low == 2 && counter_col == 1);
+
     always @(counter_h) begin
         if (counter_h <= 'd210) begin counter_col <= 0; square_x <= counter_h; end
     	else if (counter_h <= 'd290) begin counter_col <= 1; square_x <= counter_h - 'd210; end
@@ -401,7 +479,6 @@ module display_module(
                 end
                 
                 //외곽 타일
-                
                 
                 else  output_color <= {8'd0, 8'd0, 8'd0};
             end
