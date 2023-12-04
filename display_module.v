@@ -34,26 +34,171 @@ module display_module(
 
     //edgetile 76*76px
     localparam [24-1:0] RGB_TILE_RED_ART = {8'd255, 8'd0, 8'd0};
-    localparam [24-1:0] RGB_TILE_ORANGE_ART = {8'd255, 8'd0, 8'd0};
-    localparam [24-1:0] RGB_TILE_YELLOW_ART = {8'd255, 8'd0, 8'd0};
-    localparam [24-1:0] RGB_TILE_GREEN_ART = {8'd255, 8'd0, 8'd0};
-    localparam [24-1:0] RGB_TILE_BLUE_ART = {8'd255, 8'd0, 8'd0};
-    localparam [24-1:0] RGB_TILE_NAVY_ART = {8'd255, 8'd0, 8'd0};
-    localparam [24-1:0] RGB_TILE_PURPLE_ART = {8'd255, 8'd0, 8'd0};
-    localparam [24-1:0] RGB_TILE_WHITE_ART = {8'd255, 8'd0, 8'd0};
-    localparam [24-1:0] RGB_TILE_BLACK_ART = {8'd255, 8'd0, 8'd0};
-    localparam [24-1:0] RGB_TILE_SKYBLUE_ART = {8'd255, 8'd0, 8'd0};
-    localparam [24-1:0] RGB_TILE_FORESTGREEN_ART = {8'd255, 8'd0, 8'd0};
-    localparam [24-1:0] RGB_TILE_GRAY_ART = {8'd255, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_ORANGE_ART = {8'd255, 8'd140, 8'd0};
+    localparam [24-1:0] RGB_TILE_YELLOW_ART = {8'd255, 8'd255, 8'd0};
+    localparam [24-1:0] RGB_TILE_GREEN_ART = {8'd50, 8'd205, 8'd50};
+    localparam [24-1:0] RGB_TILE_BLUE_ART = {8'd0, 8'd0, 8'd255};
+    localparam [24-1:0] RGB_TILE_NAVY_ART = {8'd0, 8'd0, 8'd128};
+    localparam [24-1:0] RGB_TILE_PURPLE_ART = {8'd148, 8'd0, 8'd211};
+    localparam [24-1:0] RGB_TILE_WHITE_ART = {8'd255, 8'd255, 8'd255};
+    localparam [24-1:0] RGB_TILE_BLACK_ART = {8'd0, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_SKYBLUE_ART = {8'd135, 8'd206, 8'd235};
+    localparam [24-1:0] RGB_TILE_FORESTGREEN_ART = {8'd0, 8'd100, 8'd0};
+    localparam [24-1:0] RGB_TILE_GRAY_ART = {8'd128, 8'd128, 8'd128};
 
     //localparam RGB_BORDERLINE = 8'b;
     //localparam RGB_RIGHTEDGE = 8'b;
     //localparam RGB_GAPSPACE = 8'b;
 
+    reg [8-1:0] TILE_ZERO_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00111100;
+        TILE_ONE_ART[2] = 8'b00100100;
+        TILE_ONE_ART[3] = 8'b00100100;
+        TILE_ONE_ART[4] = 8'b00100100;
+        TILE_ONE_ART[5] = 8'b00111100;
+        TILE_ONE_ART[6] = 8'b00000000;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+
     reg [8-1:0] TILE_ONE_ART [8-1:0];
     initial begin
         TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00010000;
+        TILE_ONE_ART[2] = 8'b00010000;
+        TILE_ONE_ART[3] = 8'b00010000;
+        TILE_ONE_ART[4] = 8'b00010000;
+        TILE_ONE_ART[5] = 8'b00010000;
+        TILE_ONE_ART[6] = 8'b00000000;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+
+
+    reg [8-1:0] TILE_TWO_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00111100;
+        TILE_ONE_ART[2] = 8'b00000100;
+        TILE_ONE_ART[3] = 8'b00111100;
+        TILE_ONE_ART[4] = 8'b00100000;
+        TILE_ONE_ART[5] = 8'b00111100;
+        TILE_ONE_ART[6] = 8'b00000000;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+
+    reg [8-1:0] TILE_THREE_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00111100;
+        TILE_ONE_ART[2] = 8'b00100000;
+        TILE_ONE_ART[3] = 8'b00111100;
+        TILE_ONE_ART[4] = 8'b00100000;
+        TILE_ONE_ART[5] = 8'b00111100;
+        TILE_ONE_ART[6] = 8'b00000000;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+
+    reg [8-1:0] TILE_FOUR_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00100000;
+        TILE_ONE_ART[2] = 8'b00100000;
+        TILE_ONE_ART[3] = 8'b01111100;
+        TILE_ONE_ART[4] = 8'b00100100;
+        TILE_ONE_ART[5] = 8'b00100100;
+        TILE_ONE_ART[6] = 8'b00000000;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+
+    reg [8-1:0] TILE_FIVE_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00111100;
+        TILE_ONE_ART[2] = 8'b00100000;
+        TILE_ONE_ART[3] = 8'b00111100;
+        TILE_ONE_ART[4] = 8'b00000100;
+        TILE_ONE_ART[5] = 8'b00111100;
+        TILE_ONE_ART[6] = 8'b00000000;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+
+    reg [8-1:0] TILE_SIX_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00111100;
+        TILE_ONE_ART[2] = 8'b0010010;
+        TILE_ONE_ART[3] = 8'b00111100;
+        TILE_ONE_ART[4] = 8'b00000100;
+        TILE_ONE_ART[5] = 8'b00111100;
+        TILE_ONE_ART[6] = 8'b00000000;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+
+    reg [8-1:0] TILE_SEVEN_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00100000;
+        TILE_ONE_ART[2] = 8'b00100000;
+        TILE_ONE_ART[3] = 8'b00100000;
+        TILE_ONE_ART[4] = 8'b00100100;
+        TILE_ONE_ART[5] = 8'b00111100;
+        TILE_ONE_ART[6] = 8'b00000000;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+
+    reg [8-1:0] TILE_EIGHT_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00111100;
+        TILE_ONE_ART[2] = 8'b00100100;
+        TILE_ONE_ART[3] = 8'b00111100;
+        TILE_ONE_ART[4] = 8'b00100100;
+        TILE_ONE_ART[5] = 8'b00111100;
+        TILE_ONE_ART[6] = 8'b00000000;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+
+    reg [8-1:0] TILE_NINE_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00111100;
+        TILE_ONE_ART[2] = 8'b00100000;
+        TILE_ONE_ART[3] = 8'b00111100;
+        TILE_ONE_ART[4] = 8'b00100100;
+        TILE_ONE_ART[5] = 8'b00111100;
+        TILE_ONE_ART[6] = 8'b00000000;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+
+    reg [8-1:0] TILE_SHARP_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00100100;
+        TILE_ONE_ART[2] = 8'b01111110;
+        TILE_ONE_ART[3] = 8'b00100100;
+        TILE_ONE_ART[4] = 8'b00100100;
+        TILE_ONE_ART[5] = 8'b01111110;
+        TILE_ONE_ART[6] = 8'b00100100;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+
+    reg [8-1:0] TILE_STAR_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00010000;
+        TILE_ONE_ART[2] = 8'b01010100;
+        TILE_ONE_ART[3] = 8'b00111000;
+        TILE_ONE_ART[4] = 8'b00111000;
+        TILE_ONE_ART[5] = 8'b01010100;
+        TILE_ONE_ART[6] = 8'b00010000;
+        TILE_ONE_ART[7] = 8'b00000000;
+    end
+
+    reg [8-1:0] TILE_arrow_ART [8-1:0];
+    initial begin
+        TILE_ONE_ART[0] = 8'b00000000;
+        TILE_ONE_ART[1] = 8'b00010000;
         TILE_ONE_ART[2] = 8'b00010000;
         TILE_ONE_ART[3] = 8'b00010000;
         TILE_ONE_ART[4] = 8'b00010000;
