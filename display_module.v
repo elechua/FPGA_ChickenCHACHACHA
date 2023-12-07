@@ -3,8 +3,6 @@ module display_module(
     input [96-1:0] edge_order, 
     input [4-1:0] P1_pos, P2_pos, P3_pos, P4_pos,
     input board,
-    input [11-1:0] counter_h;
-    input [10-1:0] counter_v;
     output den, hsync, vsync, 
     output [8-1:0] R, G, B,
     output dclk, disp_en
@@ -34,6 +32,9 @@ module display_module(
     edge_21_color,
     edge_22_color,
     edge_23_color;
+    
+    wire [11-1:0] counter_h;
+    wire [10-1:0] counter_v;
     
     tft_lcd_controller ctl(.clk(clk), .rst(rst), .counter_h(counter_h), .counter_v(counter_v), .disp_den(den), .disp_hsync(hsync), .disp_vsync(vsync), .disp_clk(dclk), .disp_enb(disp_en));
 
@@ -103,7 +104,7 @@ module display_module(
     localparam [24-1:0] RGB_TILE_GRAY_ART = {8'd128, 8'd128, 8'd128};
     localparam [24-1:0] RGB_TILE_BROWN_ART = {8'd165, 8'd42, 8'd165};
 
-    always @ (color) begin
+ /*  always @ (color) begin
         case (color)
             TILE_RED : output_color = RGB_TILE_RED_ART;
             TILE_ORANGE : output_color = RGB_TILE_ORANGE_ART;
@@ -119,7 +120,7 @@ module display_module(
             TILE_GRAY : output_color = RGB_TILE_GRAY_ART;
             TILE_BRWON : output_color = RGB_TILE_BROWN_ART;
         endcase
-    end
+    end */
            
 
     //localparam RGB_BORDERLINE = 8'b;
@@ -128,14 +129,14 @@ module display_module(
 
     reg [8-1:0] TILE_ZERO_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00111100;
-        TILE_ONE_ART[2] = 8'b00100100;
-        TILE_ONE_ART[3] = 8'b00100100;
-        TILE_ONE_ART[4] = 8'b00100100;
-        TILE_ONE_ART[5] = 8'b00111100;
-        TILE_ONE_ART[6] = 8'b00000000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_ZERO_ART[0] = 8'b00000000;
+        TILE_ZERO_ART[1] = 8'b00000000;
+        TILE_ZERO_ART[2] = 8'b00111100;
+        TILE_ZERO_ART[3] = 8'b00100100;
+        TILE_ZERO_ART[4] = 8'b00100100;
+        TILE_ZERO_ART[5] = 8'b00100100;
+        TILE_ZERO_ART[6] = 8'b00111100;
+        TILE_ZERO_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_ONE_ART [8-1:0];
@@ -153,218 +154,218 @@ module display_module(
 
     reg [8-1:0] TILE_TWO_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00111100;
-        TILE_ONE_ART[2] = 8'b00000100;
-        TILE_ONE_ART[3] = 8'b00111100;
-        TILE_ONE_ART[4] = 8'b00100000;
-        TILE_ONE_ART[5] = 8'b00111100;
-        TILE_ONE_ART[6] = 8'b00000000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_TWO_ART[0] = 8'b00000000;
+        TILE_TWO_ART[1] = 8'b00111100;
+        TILE_TWO_ART[2] = 8'b00100000;
+        TILE_TWO_ART[3] = 8'b00111100;
+        TILE_TWO_ART[4] = 8'b00000100;
+        TILE_TWO_ART[5] = 8'b00111100;
+        TILE_TWO_ART[6] = 8'b00000000;
+        TILE_TWO_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_THREE_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00111100;
-        TILE_ONE_ART[2] = 8'b00100000;
-        TILE_ONE_ART[3] = 8'b00111100;
-        TILE_ONE_ART[4] = 8'b00100000;
-        TILE_ONE_ART[5] = 8'b00111100;
-        TILE_ONE_ART[6] = 8'b00000000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_THREE_ART[0] = 8'b00000000;
+        TILE_THREE_ART[1] = 8'b00111100;
+        TILE_THREE_ART[2] = 8'b00100000;
+        TILE_THREE_ART[3] = 8'b00111100;
+        TILE_THREE_ART[4] = 8'b00100000;
+        TILE_THREE_ART[5] = 8'b00111100;
+        TILE_THREE_ART[6] = 8'b00000000;
+        TILE_THREE_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_FOUR_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00100000;
-        TILE_ONE_ART[2] = 8'b00100000;
-        TILE_ONE_ART[3] = 8'b01111100;
-        TILE_ONE_ART[4] = 8'b00100100;
-        TILE_ONE_ART[5] = 8'b00100100;
-        TILE_ONE_ART[6] = 8'b00000000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_FOUR_ART[0] = 8'b00000000;
+        TILE_FOUR_ART[1] = 8'b00100100;
+        TILE_FOUR_ART[2] = 8'b00100100;
+        TILE_FOUR_ART[3] = 8'b01111100;
+        TILE_FOUR_ART[4] = 8'b00100000;
+        TILE_FOUR_ART[5] = 8'b00100000;
+        TILE_FOUR_ART[6] = 8'b00000000;
+        TILE_FOUR_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_FIVE_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00111100;
-        TILE_ONE_ART[2] = 8'b00100000;
-        TILE_ONE_ART[3] = 8'b00111100;
-        TILE_ONE_ART[4] = 8'b00000100;
-        TILE_ONE_ART[5] = 8'b00111100;
-        TILE_ONE_ART[6] = 8'b00000000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_FIVE_ART[0] = 8'b00000000;
+        TILE_FIVE_ART[1] = 8'b00111100;
+        TILE_FIVE_ART[2] = 8'b00000100;
+        TILE_FIVE_ART[3] = 8'b00111100;
+        TILE_FIVE_ART[4] = 8'b00100000;
+        TILE_FIVE_ART[5] = 8'b00111100;
+        TILE_FIVE_ART[6] = 8'b00000000;
+        TILE_FIVE_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_SIX_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00111100;
-        TILE_ONE_ART[2] = 8'b0010010;
-        TILE_ONE_ART[3] = 8'b00111100;
-        TILE_ONE_ART[4] = 8'b00000100;
-        TILE_ONE_ART[5] = 8'b00111100;
-        TILE_ONE_ART[6] = 8'b00000000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_SIX_ART[0] = 8'b00000000;
+        TILE_SIX_ART[1] = 8'b00111100;
+        TILE_SIX_ART[2] = 8'b00000100;
+        TILE_SIX_ART[3] = 8'b00111100;
+        TILE_SIX_ART[4] = 8'b00100100;
+        TILE_SIX_ART[5] = 8'b00111100;
+        TILE_SIX_ART[6] = 8'b00000000;
+        TILE_SIX_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_SEVEN_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00100000;
-        TILE_ONE_ART[2] = 8'b00100000;
-        TILE_ONE_ART[3] = 8'b00100000;
-        TILE_ONE_ART[4] = 8'b00100100;
-        TILE_ONE_ART[5] = 8'b00111100;
-        TILE_ONE_ART[6] = 8'b00000000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_SEVEN_ART[0] = 8'b00000000;
+        TILE_SEVEN_ART[1] = 8'b00000000;
+        TILE_SEVEN_ART[2] = 8'b00111100;
+        TILE_SEVEN_ART[3] = 8'b00100100;
+        TILE_SEVEN_ART[4] = 8'b00100000;
+        TILE_SEVEN_ART[5] = 8'b00100000;
+        TILE_SEVEN_ART[6] = 8'b00100000;
+        TILE_SEVEN_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_EIGHT_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00111100;
-        TILE_ONE_ART[2] = 8'b00100100;
-        TILE_ONE_ART[3] = 8'b00111100;
-        TILE_ONE_ART[4] = 8'b00100100;
-        TILE_ONE_ART[5] = 8'b00111100;
-        TILE_ONE_ART[6] = 8'b00000000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_EIGHT_ART[0] = 8'b00000000;
+        TILE_EIGHT_ART[1] = 8'b00000000;
+        TILE_EIGHT_ART[2] = 8'b00111100;
+        TILE_EIGHT_ART[3] = 8'b00100100;
+        TILE_EIGHT_ART[4] = 8'b00111100;
+        TILE_EIGHT_ART[5] = 8'b00100100;
+        TILE_EIGHT_ART[6] = 8'b00111100;
+        TILE_EIGHT_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_NINE_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00111100;
-        TILE_ONE_ART[2] = 8'b00100000;
-        TILE_ONE_ART[3] = 8'b00111100;
-        TILE_ONE_ART[4] = 8'b00100100;
-        TILE_ONE_ART[5] = 8'b00111100;
-        TILE_ONE_ART[6] = 8'b00000000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_NINE_ART[0] = 8'b00000000;
+        TILE_NINE_ART[1] = 8'b00000000;
+        TILE_NINE_ART[2] = 8'b00111100;
+        TILE_NINE_ART[3] = 8'b00100100;
+        TILE_NINE_ART[4] = 8'b00111100;
+        TILE_NINE_ART[5] = 8'b00100000;
+        TILE_NINE_ART[6] = 8'b00111100;
+        TILE_NINE_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_SHARP_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00100100;
-        TILE_ONE_ART[2] = 8'b01111110;
-        TILE_ONE_ART[3] = 8'b00100100;
-        TILE_ONE_ART[4] = 8'b00100100;
-        TILE_ONE_ART[5] = 8'b01111110;
-        TILE_ONE_ART[6] = 8'b00100100;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_SHARP_ART[0] = 8'b00000000;
+        TILE_SHARP_ART[1] = 8'b00100100;
+        TILE_SHARP_ART[2] = 8'b01111110;
+        TILE_SHARP_ART[3] = 8'b00100100;
+        TILE_SHARP_ART[4] = 8'b00100100;
+        TILE_SHARP_ART[5] = 8'b01111110;
+        TILE_SHARP_ART[6] = 8'b00100100;
+        TILE_SHARP_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_STAR_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00010000;
-        TILE_ONE_ART[2] = 8'b01010100;
-        TILE_ONE_ART[3] = 8'b00111000;
-        TILE_ONE_ART[4] = 8'b00111000;
-        TILE_ONE_ART[5] = 8'b01010100;
-        TILE_ONE_ART[6] = 8'b00010000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_STAR_ART[0] = 8'b00000000;
+        TILE_STAR_ART[1] = 8'b00010000;
+        TILE_STAR_ART[2] = 8'b01010100;
+        TILE_STAR_ART[3] = 8'b00111000;
+        TILE_STAR_ART[4] = 8'b00111000;
+        TILE_STAR_ART[5] = 8'b01010100;
+        TILE_STAR_ART[6] = 8'b00010000;
+        TILE_STAR_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_NW_ARROW_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00000000;
-        TILE_ONE_ART[2] = 8'b00000010;
-        TILE_ONE_ART[3] = 8'b00000010;
-        TILE_ONE_ART[4] = 8'b00100010;
-        TILE_ONE_ART[5] = 8'b01111110;
-        TILE_ONE_ART[6] = 8'b00100000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_NW_ARROW_ART[0] = 8'b00000000;
+        TILE_NW_ARROW_ART[1] = 8'b00100000;
+        TILE_NW_ARROW_ART[2] = 8'b01111110;
+        TILE_NW_ARROW_ART[3] = 8'b00100010;
+        TILE_NW_ARROW_ART[4] = 8'b00000010;
+        TILE_NW_ARROW_ART[5] = 8'b00000010;
+        TILE_NW_ARROW_ART[6] = 8'b00000000;
+        TILE_NW_ARROW_ART[7] = 8'b00000000;
     end
     
     reg [8-1:0] TILE_NE_ARROW_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00100000;
-        TILE_ONE_ART[2] = 8'b01110000;
-        TILE_ONE_ART[3] = 8'b00100000;
-        TILE_ONE_ART[4] = 8'b00100000;
-        TILE_ONE_ART[5] = 8'b00100000;
-        TILE_ONE_ART[6] = 8'b00111100;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_NE_ARROW_ART[0] = 8'b00000000;
+        TILE_NE_ARROW_ART[1] = 8'b00111100;
+        TILE_NE_ARROW_ART[2] = 8'b00100000;
+        TILE_NE_ARROW_ART[3] = 8'b00100000;
+        TILE_NE_ARROW_ART[4] = 8'b00100000;
+        TILE_NE_ARROW_ART[5] = 8'b01110000;
+        TILE_NE_ARROW_ART[6] = 8'b00100000;
+        TILE_NE_ARROW_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_SE_ARROW_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00000100;
-        TILE_ONE_ART[2] = 8'b01111110;
-        TILE_ONE_ART[3] = 8'b01000100;
-        TILE_ONE_ART[4] = 8'b01000000;
-        TILE_ONE_ART[5] = 8'b01000000;
-        TILE_ONE_ART[6] = 8'b00000000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_SE_ARROW_ART[0] = 8'b00000000;
+        TILE_SE_ARROW_ART[1] = 8'b00000000;
+        TILE_SE_ARROW_ART[2] = 8'b01000000;
+        TILE_SE_ARROW_ART[3] = 8'b01000000;
+        TILE_SE_ARROW_ART[4] = 8'b01000100;
+        TILE_SE_ARROW_ART[5] = 8'b01111110;
+        TILE_SE_ARROW_ART[6] = 8'b00000100;
+        TILE_SE_ARROW_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_SW_ARROW_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00111100;
-        TILE_ONE_ART[2] = 8'b00000100;
-        TILE_ONE_ART[3] = 8'b00000100;
-        TILE_ONE_ART[4] = 8'b00000100;
-        TILE_ONE_ART[5] = 8'b00001110;
-        TILE_ONE_ART[6] = 8'b00000100;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_SW_ARROW_ART[0] = 8'b00000000;
+        TILE_SW_ARROW_ART[1] = 8'b00000100;
+        TILE_SW_ARROW_ART[2] = 8'b00001110;
+        TILE_SW_ARROW_ART[3] = 8'b00000100;
+        TILE_SW_ARROW_ART[4] = 8'b00000100;
+        TILE_SW_ARROW_ART[5] = 8'b00000100;
+        TILE_SW_ARROW_ART[6] = 8'b00111100;
+        TILE_SW_ARROW_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_P1_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00011000;
-        TILE_ONE_ART[2] = 8'b00100100;
-        TILE_ONE_ART[3] = 8'b01000010;
-        TILE_ONE_ART[4] = 8'b01000010;
-        TILE_ONE_ART[5] = 8'b00100100;
-        TILE_ONE_ART[6] = 8'b00011000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_P1_ART[0] = 8'b00000000;
+        TILE_P1_ART[1] = 8'b00011000;
+        TILE_P1_ART[2] = 8'b00100100;
+        TILE_P1_ART[3] = 8'b01000010;
+        TILE_P1_ART[4] = 8'b01000010;
+        TILE_P1_ART[5] = 8'b00100100;
+        TILE_P1_ART[6] = 8'b00011000;
+        TILE_P1_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_P2_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00000000;
-        TILE_ONE_ART[2] = 8'b00111100;
-        TILE_ONE_ART[3] = 8'b00100100;
-        TILE_ONE_ART[4] = 8'b00100100;
-        TILE_ONE_ART[5] = 8'b00111100;
-        TILE_ONE_ART[6] = 8'b00000000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_P2_ART[0] = 8'b00000000;
+        TILE_P2_ART[1] = 8'b00000000;
+        TILE_P2_ART[2] = 8'b00111100;
+        TILE_P2_ART[3] = 8'b00100100;
+        TILE_P2_ART[4] = 8'b00100100;
+        TILE_P2_ART[5] = 8'b00111100;
+        TILE_P2_ART[6] = 8'b00000000;
+        TILE_P2_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_P3_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00000000;
-        TILE_ONE_ART[2] = 8'b01111110;
-        TILE_ONE_ART[3] = 8'b01000100;
-        TILE_ONE_ART[4] = 8'b00101000;
-        TILE_ONE_ART[5] = 8'b00010000;
-        TILE_ONE_ART[6] = 8'b00000000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_P3_ART[0] = 8'b00000000;
+        TILE_P3_ART[1] = 8'b00000000;
+        TILE_P3_ART[2] = 8'b01111110;
+        TILE_P3_ART[3] = 8'b01000100;
+        TILE_P3_ART[4] = 8'b00101000;
+        TILE_P3_ART[5] = 8'b00010000;
+        TILE_P3_ART[6] = 8'b00000000;
+        TILE_P3_ART[7] = 8'b00000000;
     end
 
     reg [8-1:0] TILE_P4_ART [8-1:0];
     initial begin
-        TILE_ONE_ART[0] = 8'b00000000;
-        TILE_ONE_ART[1] = 8'b00000000;
-        TILE_ONE_ART[2] = 8'b00100100;
-        TILE_ONE_ART[3] = 8'b00111100;
-        TILE_ONE_ART[4] = 8'b01100110;
-        TILE_ONE_ART[5] = 8'b00111000;
-        TILE_ONE_ART[6] = 8'b00010000;
-        TILE_ONE_ART[7] = 8'b00000000;
+        TILE_P4_ART[0] = 8'b00000000;
+        TILE_P4_ART[1] = 8'b00000000;
+        TILE_P4_ART[2] = 8'b00100100;
+        TILE_P4_ART[3] = 8'b00111100;
+        TILE_P4_ART[4] = 8'b01100110;
+        TILE_P4_ART[5] = 8'b00111000;
+        TILE_P4_ART[6] = 8'b00010000;
+        TILE_P4_ART[7] = 8'b00000000;
     end
     
     reg [3-1:0] counter_row; // the square the pixels are currently on
@@ -402,30 +403,30 @@ module display_module(
     wire edge_23;
 
     //외곽타일 매치
-    assign edge_0 = (counter_low == 1 && counter_col == 1);
-    assign edge_1 = (counter_low == 1 && counter_col == 2);
-    assign edge_2 = (counter_low == 1 && counter_col == 3);
-    assign edge_3 = (counter_low == 1 && counter_col == 4);
-    assign edge_4 = (counter_low == 1 && counter_col == 5);
-    assign edge_5 = (counter_low == 1 && counter_col == 6);
-    assign edge_6 = (counter_low == 1 && counter_col == 7);
-    assign edge_7 = (counter_low == 1 && counter_col == 8);
-    assign edge_8 = (counter_low == 2 && counter_col == 8);
-    assign edge_9 = (counter_low == 3 && counter_col == 8);
-    assign edge_10 = (counter_low == 4 && counter_col == 8);
-    assign edge_11 = (counter_low == 5 && counter_col == 8);
-    assign edge_12 = (counter_low == 6 && counter_col == 8);
-    assign edge_13 = (counter_low == 6 && counter_col == 7);
-    assign edge_14 = (counter_low == 6 && counter_col == 6);
-    assign edge_15 = (counter_low == 6 && counter_col == 5);
-    assign edge_16 = (counter_low == 6 && counter_col == 4);
-    assign edge_17 = (counter_low == 6 && counter_col == 3);
-    assign edge_18 = (counter_low == 6 && counter_col == 2);
-    assign edge_19 = (counter_low == 6 && counter_col == 1);
-    assign edge_20 = (counter_low == 5 && counter_col == 1);
-    assign edge_21 = (counter_low == 4 && counter_col == 1);
-    assign edge_22 = (counter_low == 3 && counter_col == 1);
-    assign edge_23 = (counter_low == 2 && counter_col == 1);
+    assign edge_0 = (counter_row == 1 && counter_col == 1);
+    assign edge_1 = (counter_row == 1 && counter_col == 2);
+    assign edge_2 = (counter_row == 1 && counter_col == 3);
+    assign edge_3 = (counter_row == 1 && counter_col == 4);
+    assign edge_4 = (counter_row == 1 && counter_col == 5);
+    assign edge_5 = (counter_row == 1 && counter_col == 6);
+    assign edge_6 = (counter_row == 1 && counter_col == 7);
+    assign edge_7 = (counter_row == 1 && counter_col == 8);
+    assign edge_8 = (counter_row == 2 && counter_col == 8);
+    assign edge_9 = (counter_row == 3 && counter_col == 8);
+    assign edge_10 = (counter_row == 4 && counter_col == 8);
+    assign edge_11 = (counter_row == 5 && counter_col == 8);
+    assign edge_12 = (counter_row == 6 && counter_col == 8);
+    assign edge_13 = (counter_row == 6 && counter_col == 7);
+    assign edge_14 = (counter_row == 6 && counter_col == 6);
+    assign edge_15 = (counter_row == 6 && counter_col == 5);
+    assign edge_16 = (counter_row == 6 && counter_col == 4);
+    assign edge_17 = (counter_row == 6 && counter_col == 3);
+    assign edge_18 = (counter_row == 6 && counter_col == 2);
+    assign edge_19 = (counter_row == 6 && counter_col == 1);
+    assign edge_20 = (counter_row == 5 && counter_col == 1);
+    assign edge_21 = (counter_row == 4 && counter_col == 1);
+    assign edge_22 = (counter_row == 3 && counter_col == 1);
+    assign edge_23 = (counter_row == 2 && counter_col == 1);
 
     assign if_edge = edge_0 && edge_1 && edge_2 && edge_3 && edge_4 && edge_5 && edge_6 && edge_7 && edge_8 && edge_9 && edge_10 && edge_11 && edge_12 && edge_13 && edge_14 && edge_15 && edge_16 && edge_17 && edge_18 && edge_19 && edge_20 && edge_21 && edge_22 && edge_23;
 
@@ -480,15 +481,15 @@ module display_module(
     assign in_board = (square_x >= 2 && square_x <= 78 && square_y >= 2 && square_y <= 78);
 
     always @ (posedge clk or posedge rst) begin
-        if(rst) color <= black;
+        if(rst) color <= RGB_TILE_BLACK_ART;
         else begin
             if (in_border) begin
                 if (counter_row == 2 && counter_col == 2 || counter_row == 2 && counter_col == 3 || counter_row == 2 && counter_col == 4 || counter_row == 2 && counter_col == 5 || counter_row == 2 && counter_col == 6 || counter_row == 2 && counter_col == 7 ||
                     counter_row == 5 && counter_col == 2 || counter_row == 5 && counter_col == 3 || counter_row == 5 && counter_col == 4 || counter_row == 5 && counter_col == 5 || counter_row == 5 && counter_col == 6 || counter_row == 5 && counter_col == 7 ||
                     counter_col == 9)
-                    color <= black;
+                    output_color <= RGB_TILE_BLACK_ART;
                 else
-                    color <= white;
+                    output_color <= RGB_TILE_WHITE_ART;
             end
             else if (in_board) begin
                 // 가운데 타일
@@ -496,179 +497,179 @@ module display_module(
                 // ROW 4 COL 2 ~ 7
                 //1
                 if (counter_row == 3 && counter_col == 2) begin
-                    if (TILE_ONE_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_ONE_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //2
                 else if (counter_row == 3 && counter_col == 3) begin
-                    if (TILE_TWO_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_TWO_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //3
                 else if (counter_row == 3 && counter_col == 4) begin
-                    if (TILE_THREE_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_THREE_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //4
                 else if (counter_row == 3 && counter_col == 5) begin
-                    if (TILE_FOUR_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_FOUR_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //5
                 else if (counter_row == 3 && counter_col == 6) begin
-                    if (TILE_FIVE_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_FIVE_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //6
                 else if (counter_row == 3 && counter_col == 7) begin
-                    if (TILE_SIX_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_SIX_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //7
                 else if (counter_row == 4 && counter_col == 2) begin
-                    if (TILE_SEVEN_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_SEVEN_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //8
                 else if (counter_row == 4 && counter_col == 3) begin
-                    if (TILE_EIGHT_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_EIGHT_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //9
                 else if (counter_row == 4 && counter_col == 4) begin
-                    if (TILE_NINE_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_NINE_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //0
                 else if (counter_row == 4 && counter_col == 5) begin
-                    if (TILE_ZERO_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_ZERO_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //#
                 else if (counter_row == 4 && counter_col == 6) begin
-                    if (TILE_SHARP_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_SHARP_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //*
                 else if (counter_row == 4 && counter_col == 7) begin
-                    if (TILE_STAR_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_STAR_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //화살표 타일
                 //북서쪽
                 else if (counter_row == 2 && counter_col == 2) begin
-                    if (TILE_NW_ARROW_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_NW_ARROW_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //북동쪽
                 else if (counter_row == 2 && counter_col == 7) begin
-                    if (TILE_NE_ARROW_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_NE_ARROW_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //남동쪽
                 else if (counter_row == 5 && counter_col == 7) begin
-                    if (TILE_SE_ARROW_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_SE_ARROW_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 //남서쪽
                 else if (counter_row == 5 && counter_col == 2) begin
-                    if (TILE_SW_ARROW_ART[art_y][art_x]) color <= white;
-                    else color <= black;
+                    if (TILE_SW_ARROW_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
+                    else output_color <= RGB_TILE_BLACK_ART;
                 end
                 
                 //외곽 타일
-                else if (if_edge)
+                /*else if (if_edge)
                     if (edge_0)
                         if (P1_pos == 0)
-                            if (TILE_P1_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_0_color;
                         else if (P2_pos == 0)    
-                            if (TILE_P2_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_0_color;
                         else if (P3_pos == 0)    
-                            if (TILE_P3_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_0_color;
                         else if (P4_pos == 0)    
-                            if (TILE_P4_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_0_color;
                         else color <= edge_0_color;
                     else if (edge_1)
                         if (P1_pos == 1)
-                            if (TILE_P1_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_1_color;
                         else if (P2_pos == 1)    
-                            if (TILE_P2_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_1_color;
                         else if (P3_pos == 1)    
-                            if (TILE_P3_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_1_color;
                         else if (P4_pos == 1)    
-                            if (TILE_P4_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_1_color;
                         else color <= edge_0_color;
                     else if (edge_2)
                         if (P1_pos == 2)
-                            if (TILE_P1_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_2_color;
                         else if (P2_pos == 2)    
-                            if (TILE_P2_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_2_color;
                         else if (P3_pos == 2)    
-                            if (TILE_P3_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_2_color;
                         else if (P4_pos == 2)    
-                            if (TILE_P4_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_2_color;
                         else color <= edge_2_color;
                     else if (edge_3)
                         if (P1_pos == 3)
-                            if (TILE_P1_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_3_color;
                         else if (P2_pos == 3)    
-                            if (TILE_P2_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_3_color;
                         else if (P3_pos == 3)    
-                            if (TILE_P3_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_3_color;
                         else if (P4_pos == 3)    
-                            if (TILE_P4_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_2_color;
                         else color <= edge_3_color;
                     else if (edge_4)
                         if (P1_pos == 4)
-                            if (TILE_P1_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_4_color;
                         else if (P2_pos == 4)    
-                            if (TILE_P2_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_4_color;
                         else if (P3_pos == 4)    
-                            if (TILE_P3_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_4_color;
                         else if (P4_pos == 4)    
-                            if (TILE_P4_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_4_color;
                         else color <= edge_4_color;
                     else if (edge_5)
                         if (P1_pos == 5)
-                            if (TILE_P1_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_5_color;
                         else if (P2_pos == 5)    
-                            if (TILE_P2_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_5_color;
                         else if (P3_pos == 5)    
-                            if (TILE_P3_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_5_color;
                         else if (P4_pos == 5)    
-                            if (TILE_P4_ART[art_y][art_x]) color <= brown;
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_5_color;
-                        else color <= edge_5_color;
+                        else color <= edge_5_color;*/
 
                 //6 ~ 23 도 해야됨....
                             
-                else  color <= black;
+                else  output_color <= RGB_TILE_BLACK_ART;
             end
             else begin
-                color <= black;
+                output_color <= RGB_TILE_BLACK_ART;
             end
         end
     end
