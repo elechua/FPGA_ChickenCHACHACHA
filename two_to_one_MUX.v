@@ -1,6 +1,6 @@
 module two_to_one_MUX(
     input [4-1:0] key,
-    input [5-1:0] tile_info,
+    input [4-1:0] tile_info,
     input A,
     output reg [4-1:0] ADDR_IN
 );
