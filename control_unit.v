@@ -19,7 +19,7 @@ module control_unit(
                     if(c == 0) M <= 3'b000;
                     else if(c == 1) M <= 3'b001;
                 3'b001:
-                    if(key == 4'hf) M <= 3'b001;
+                    if(key <= 4'h1 | key >= 4'h5) M <= 3'b001;
                     else begin
                         N=key;
                         M <= 3'b010;
