@@ -7,6 +7,9 @@ module display_module(
     output [8-1:0] R, G, B,
     output dclk, disp_en
 );
+    wire [11-1:0] counter_h;
+    wire [10-1:0] counter_v;
+    tft_lcd_controller ctl(.clk(clk), .rst(rst), .counter_h(counter_h), .counter_v(counter_v), .disp_den(den), .disp_hsync(hsync), .disp_vsync(vsync), .disp_clk(dclk), .disp_enb(disp_en));
     
     wire [3:0] edge_0_color,
     edge_1_color,
@@ -32,19 +35,6 @@ module display_module(
     edge_21_color,
     edge_22_color,
     edge_23_color;
-    
-    wire [11-1:0] counter_h;
-    wire [10-1:0] counter_v;
-    
-    tft_lcd_controller ctl(.clk(clk), .rst(rst), .counter_h(counter_h), .counter_v(counter_v), .disp_den(den), .disp_hsync(hsync), .disp_vsync(vsync), .disp_clk(dclk), .disp_enb(disp_en));
-
-    reg [4-1:0] color;
-    reg [24-1:0] output_color;
-    wire inDisplayArea;
-
-    assign R = output_color[23:16];
-    assign G = output_color[15:8];
-    assign B = output_color[7:0];
 
     assign edge_0_color = edge_order[95:92];
     assign edge_1_color = edge_order[91:88];
@@ -71,6 +61,12 @@ module display_module(
     assign edge_22_color = edge_order[7:4];
     assign edge_23_color = edge_order[3:0];
     
+    reg [4-1:0] color;
+    reg [24-1:0] output_color;
+
+    assign R = output_color[23:16];
+    assign G = output_color[15:8];
+    assign B = output_color[7:0];
 
     localparam RED = 4'b0000;
     localparam ORANGE = 4'b0001;
