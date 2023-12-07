@@ -3,7 +3,7 @@ module control_unit(
     input [4-1:0] key, 
     input c, go, win,
     output reg A, B,
-    output reg [3-1:0] N,
+    output reg [2-1:0] N,
     output reg [2:0] M
     );
 
