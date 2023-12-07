@@ -4,14 +4,14 @@ module which_one(
     );
     always @ (*) begin
         if (out2 - out1 == 1)
-            pos_data = out_1 + 2;
-        else if (out1==5'd23) { 
+            pos_data = out1 + 2;
+        else if (out1==5'd23) begin 
             if (out2 == 5'd0)
                 pos_data = 5'd1;
             else
                 pos_data = 5'd0;  
-        }
+        end
         else
-            pos_data = out_1 + 1;
+            pos_data = out1 + 1;
     end
 endmodule
