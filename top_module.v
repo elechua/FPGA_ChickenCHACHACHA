@@ -1,5 +1,5 @@
 module top_module(
-        input clk, rst
+        input clk, rst,
         input [3-1:0] key_col
     );
 
