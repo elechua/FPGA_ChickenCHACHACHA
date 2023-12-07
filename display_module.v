@@ -83,8 +83,6 @@ module display_module(
     localparam GRAY = 4'b1011;
     localparam BROWN = 4'b1100;
     
-    //localparam BOARD_BLACK = 1;
-    //localparam BOARD_BROWN = 0;
     //edgetile 76*76px
     localparam [24-1:0] RGB_TILE_RED = {8'd255, 8'd0, 8'd0};
     localparam [24-1:0] RGB_TILE_ORANGE = {8'd255, 8'd140, 8'd0};
