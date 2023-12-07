@@ -5,7 +5,7 @@ module top_module(
 
         wire [4-1:0] key;
         wire A,
-        wire [3-1:0] N;
+        wire [2-1:0] N;
         wire c, go, win;
         wire [96-1:0] random_edge_order;
         wire [48-1:0] random_center_order;
