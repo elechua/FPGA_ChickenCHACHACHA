@@ -1,7 +1,7 @@
 module data_path(
     input clk, rst,
     input statecombo_next_turn,
-    input [2-1:0] N,
+    input [3-1:0] N,
     input [4-1:0] position_data,
     input A, B
     output W, go, C, 
