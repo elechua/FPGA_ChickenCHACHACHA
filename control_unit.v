@@ -1,5 +1,6 @@
 module control_unit(
-    input clk, c, [3:0] key, go, win,
+    input clk, c, 
+    input [4-1:0] key, go, win,
     input [3:0] M,
     input rst,
     output reg A, B,
