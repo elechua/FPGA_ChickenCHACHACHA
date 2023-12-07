@@ -4,7 +4,7 @@ module top_module(
     );
 
         wire [4-1:0] key;
-        wire A,
+        wire A, B, W, C;
         wire [2-1:0] N;
         wire c, go, win;
         wire [96-1:0] random_edge_order;
@@ -12,6 +12,7 @@ module top_module(
         wire [5-1:0] tile_info;
         wire [6-1:0] ADDR_IN;
         wire [4-1:0] position_data;
+        wire [5-1:0] tile_info;
         reg statecombo_next_turn = ;
         
         control_unit cu(.clk(clk), .rst(rst), .c(C), .key(key), .go(go), .win(W), .M(M), .A(A), .B(B), .N(N), .M(M));
