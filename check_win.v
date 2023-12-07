@@ -19,7 +19,7 @@ module check_win(
     assign stop_increase_4 = da4 & B;
     
     decoder decoder(.T(T), .da1(da1), .da2(da2), .da3(da3), .da4(da4));
-    cnt_player1 cnp1(.rst(rst), .B(B), .N(N), .p_da1(stop_increase_1), .p1_cnt(p1_cnt));
+    cnt_player1 cnp1(.rst(rst), .B(B), .N(N), .p_da1(stop_increase_1), .p1_cnt(p1_cnt)); //rst 될 때 n값이 들어가 있어야...이거 문제가 될 듯
     cnt_player2 cnp2(.rst(rst), .B(B), .N(N), .p_da2(stop_increase_2), .p2_cnt(p2_cnt));
     cnt_player3 cnp3(.rst(rst), .B(B), .N(N), .p_da3(stop_increase_3), .p3_cnt(p3_cnt));
     cnt_player4 cnp4(.rst(rst), .B(B), .N(N), .p_da4(stop_increase_4), .p4_cnt(p4_cnt));
