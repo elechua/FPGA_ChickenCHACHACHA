@@ -36,15 +36,21 @@ module control_unit(
                         M <= 3'b100;
                     end
                 3'b100:
-                    A <= 0;
-                    if(go == 0) M <= 3'b101;
-                    else if(go == 1) M <= 3'b110;
+                    if(go == 0) begin
+                        M <= 3'b101;
+                        A <= 0;
+                    end
+                    else if(go == 1) begin
+                        M <= 3'b110;
+                        A <= 0;
+                    end
                 3'b101:
                     M <= 3'b011;
                 3'b110:
                     if(win == 0) M <= 3'b011;
                     else if(win == 1) M <= 3'b111;
                 3'b111:
+                    M <= 3'b111;
                     //logic for state 3'b111
             endcase
         end
