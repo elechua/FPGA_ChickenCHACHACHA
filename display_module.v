@@ -658,8 +658,161 @@ module display_module(
                             if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_5_color;
                         else color <= edge_5_color;
-
-                //6 ~ 23 도 해야됨....
+                    else if (edge_6)
+                        if (P1_pos == 6)
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_6_color;
+                        else if (P2_pos == 6)    
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_6_color;
+                        else if (P3_pos == 6)    
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_6_color;
+                        else if (P4_pos == 6)    
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_6_color;
+                        else color <= edge_6_color;
+                    else if (edge_7)
+                        if (P1_pos == 7)
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_7_color;
+                        else if (P2_pos == 7)    
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_7_color;
+                        else if (P3_pos == 7)    
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_7_color;
+                        else if (P4_pos == 7)    
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_7_color;
+                        else color <= edge_7_color;
+                    else if (edge_8)
+                        if (P1_pos == 8)
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_8_color;
+                        else if (P2_pos == 8)    
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_8_color;
+                        else if (P3_pos == 8)    
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_8_color;
+                        else if (P4_pos == 8)    
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_8_color;
+                        else color <= edge_8_color;
+                    else if (edge_9)
+                        if (P1_pos == 9)
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_9_color;
+                        else if (P2_pos == 9)    
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_9_color;
+                        else if (P3_pos == 9)    
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_9_color;
+                        else if (P4_pos == 9)    
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_9_color;
+                        else color <= edge_9_color;
+                    else if (edge_10)
+                        if (P1_pos == 10)
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_10_color;
+                        else if (P2_pos == 10)    
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_10_color;
+                        else if (P3_pos == 10)    
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_10_color;
+                        else if (P4_pos == 10)    
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_10_color;
+                        else color <= edge_10_color;
+                    else if (edge_18)
+                        if (P1_pos == 18)
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_18_color;
+                        else if (P2_pos == 18)    
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_18_color;
+                        else if (P3_pos == 18)    
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_18_color;
+                        else if (P4_pos == 18)    
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_18_color;
+                        else color <= edge_18_color;
+                    
+                    else if (edge_19)
+                        if (P1_pos == 19)
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_19_color;
+                        else if (P2_pos == 19)    
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_19_color;
+                        else if (P3_pos == 19)    
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_19_color;
+                        else if (P4_pos == 19)    
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_19_color;
+                        else color <= edge_19_color;
+                    else if (edge_20)
+                        if (P1_pos == 20)
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_20_color;
+                        else if (P2_pos == 20)    
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_20_color;
+                        else if (P3_pos == 20)    
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_20_color;
+                        else if (P4_pos == 20)    
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_20_color;
+                        else color <= edge_20_color;
+                    else if (edge_21)
+                        if (P1_pos == 21)
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_21_color;
+                        else if (P2_pos == 21)    
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_21_color;
+                        else if (P3_pos == 21)    
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_21_color;
+                        else if (P4_pos == 21)    
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_21_color;
+                        else color <= edge_21_color;
+                    else if (edge_22)
+                        if (P1_pos == 22)
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_22_color;
+                        else if (P2_pos == 22)    
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_22_color;
+                        else if (P3_pos == 22)    
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_22_color;
+                        else if (P4_pos == 22)    
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_22_color;
+                        else color <= edge_22_color;   
+                    else if (edge_23)
+                        if (P1_pos == 23)
+                            if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_23_color;
+                        else if (P2_pos == 23)    
+                            if (TILE_P2_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_23_color;
+                        else if (P3_pos == 23)    
+                            if (TILE_P3_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_23_color;
+                        else if (P4_pos == 23)    
+                            if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
+                            else color <= edge_23_color;
+                        else color <= edge_23_color;
                             
                 else  output_color <= RGB_TILE_BLACK_ART;
             end
