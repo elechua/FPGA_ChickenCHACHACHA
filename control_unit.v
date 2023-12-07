@@ -32,7 +32,7 @@ module control_unit(
                         M <= 3'b011;
                     end
                     else begin
-                        A <= 1;
+                        A <= 0;
                         M <= 3'b100;
                     end
                 3'b100:
