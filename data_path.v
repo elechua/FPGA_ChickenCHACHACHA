@@ -8,7 +8,8 @@ module data_path(
     output [5-1:0] tile_info
     );
     
-    reg [2-1:0] T;
+    wire [2-1:0] T;
+    wire [5-1:0] afterposition_data;
     
     check_same cs(.clk(clk), .position_data(position_data), .A(A), .result(go));
     check_win cw(.T(T), .B(B), .N(N), .W(W), .afterposition_data(afterposition_data));
