@@ -6,10 +6,8 @@ module two_to_one_MUX(
 );
     always @ (*) begin
         case(A)
-            1'b0: stop_increase = 0;
-            1'b1: stop_increase = 1;
+            1'b0: ADDR_IN = key + 'd23;
+            1'b1: ADDR_IN = tile_info;
         endcase
     end
-
-    assign ADDR_IN = //비트수가 다른데 어카지
 endmodule
