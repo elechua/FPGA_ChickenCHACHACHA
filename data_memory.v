@@ -1,4 +1,4 @@
-module data_memory_new(
+module data_memory(
     input clk, WR,
     input [6-1:0] ADDR,
     input [96-1:0] EDGE_DATA_IN,
