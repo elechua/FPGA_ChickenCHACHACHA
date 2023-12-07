@@ -3,7 +3,6 @@ module display_module(
     input [96-1:0] edge_order,
     input [48-1:0] center_order,
     input [4-1:0] P1_pos, P2_pos, P3_pos, P4_pos,
-    //input board,
     output den, hsync, vsync, 
     output [8-1:0] R, G, B,
     output dclk, disp_en
@@ -115,10 +114,6 @@ module display_module(
             TILE_BRWON : output_color = RGB_TILE_BROWN;
         endcase
     end
-           
-    //localparam RGB_BORDERLINE = 8'b;
-    //localparam RGB_RIGHTEDGE = 8'b;
-    //localparam RGB_GAPSPACE = 8'b;
 
     reg [8-1:0] TILE_ZERO_ART [8-1:0];
     initial begin
