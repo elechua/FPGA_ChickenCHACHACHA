@@ -3,7 +3,7 @@ module data_memory(
     input [6-1:0] ADDR,
     input [96-1:0] EDGE_DATA_IN,
     input [48-1:0] CENTER_DATA_IN,
-    input [4-1:0] DATA_OUT
+    output [4-1:0] DATA_OUT
     );
     reg [4-1:0] SRAM [36-1:0];
    
