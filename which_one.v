@@ -12,6 +12,6 @@ module which_one(
                 pos_data = 5'd0;  
         end
         else
-            pos_data = out1 + 1;
+            pos_data = out1 + 5'd1;
     end
 endmodule
