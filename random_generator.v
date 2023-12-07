@@ -37,7 +37,10 @@ module random_generator(
             random_number <= $urandom % 10;
     end
 
-    assign random_edge_order <= edge_order[random_number];
-    assign random_center_order <= center_order[random_number];
+    //assign random_edge_order <= edge_order[random_number];
+    //assign random_center_order <= center_order[random_number];
+
+    assign random_edge_order <= edge_order[0];
+    assign random_center_order <= center_order[0];
     
 endmodule
