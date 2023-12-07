@@ -21,7 +21,7 @@ module control_unit(
                 3'b001:
                     if(key <= 4'h1 | key >= 4'h5) M <= 3'b001;
                     else begin
-                        N=key;
+                        N <= key;
                         M <= 3'b010;
                     end
                 3'b010:
