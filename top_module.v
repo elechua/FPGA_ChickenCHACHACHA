@@ -22,6 +22,6 @@ module top_module(
         random_generator rg(.rst(rst), .random_edge_order(random_edge_order), .random_center_order(random_center_order)); // 일단 첫번째 경우 출력하는 걸로 해놓음 ; 추후에 pseudo rng 설계해야 함
         display_module dm(.clk(clk), .rst(rst), .edge_order(random_edge_order), .center_order(random_center_order), .P1_pos(), .P2_pos(), .P3_pos(), P4_pos(),
                           .den(den), .hsync(hsync), .vsync(vsync), .R(R), .G(G), .B(B), .dclk(dclk), .disp_en(disp_en)); // 미완성 ; 뒤집은 카드 몇초 동안 보여줄 카운터 추가해야 함
-        keypad key(.clk(clk), .rst(rst), .key_col(key_col), .key_row(key_row), .key_value(key)); // 코드 맞음
+        keypad key(.clk(clk), .rst(rst), .key_col(key_col), .key_row(key_row), .key_value(key)); // tb 검증 완료
     
 endmodule
