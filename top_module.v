@@ -11,6 +11,8 @@ module top_module(
         wire [48-1:0] random_center_order;
         wire [5-1:0] tile_info;
         wire [6-1:0] ADDR_IN;
+
+        reg statecombo_next_turn = ;
         
         control_unit cu(.clk(clk), .rst(rst), .c(C), .key(key), .go(go), .win(W), .M(M), .A(A), .B(B), .N(N), .M(M));
         data_path dp(.clk(clk), .rst(rst), .statecombo_next_turn(statecombo_next_turn), .N(N), .position_data(position_data), .A(A), .B(B), .W(W), .go(go), .C(C), .tile_infor(tile_info)); //tb 검증 완료
