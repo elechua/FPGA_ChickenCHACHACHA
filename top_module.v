@@ -1,6 +1,9 @@
 module top_module(
         input clk, rst,
         input [3-1:0] key_col
+        output den, hsync, vsync, 
+        output [8-1:0] R, G, B,
+        output dclk, disp_en
     );
 
         wire [4-1:0] key;
