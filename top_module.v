@@ -26,7 +26,7 @@ module top_module(
         data_memory dmem(.clk(clk), .WR(WR), .ADDR(ADDR_IN), .EDGE_DATA_IN(random_edge_order), .CENTER_DATA_IN(random_center_order), .DATA_OUT(position_data)); //tb 검증 완료 ; WR 어디서 입력 받을 건지 정해야 함
         random_generator rg(.rst(rst), .random_edge_order(random_edge_order), .random_center_order(random_center_order)); // 일단 첫번째 경우 출력하는 걸로 해놓음 ; 추후에 pseudo rng 설계해야 함
         display_module dmod(.clk(clk), .rst(rst), .edge_order(random_edge_order), .center_order(random_center_order), .P1_pos(), .P2_pos(), .P3_pos(), .P4_pos(),
-                            .den(den), .hsync(hsync), .vsync(vsync), .R(R), .G(G), .B(B), .dclk(dclk), .disp_en(disp_en)); // 미완성 ; 뒤집은 타일 몇 초 동안 보여주는 카운터 기능 추가해야 함
+                            .den(den), .hsync(hsync), .vsync(vsync), .R(R), .G(G), .B(B), .dclk(dclk), .disp_en(disp_en)); // 완성 ; 뒤집은 타일 몇 초 동안 보여주는 카운터 기능 추가해야 함
         keypad keypad(.clk(clk), .rst(rst), .key_col(key_col), .key_row(key_row), .key_value(key)); // tb 검증 완료
     
 endmodule
