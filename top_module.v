@@ -10,7 +10,6 @@ module top_module(
     random_generator rg(.random_edge_order(random_edge_order), .random_center_order(random_center_order)); //얘도..
     display_module dm(.clk(clk), .rst(rst), .edge_order(random_edge_order), .center_order(random_center_order), .P1_pos(), .P2_pos(), .P3_pos(), P4_pos(),
                       .den(den), .hsync(hsync), .vsync(vsync), .R(R), .G(G), .B(B), .dclk(dclk), .disp_en(disp_en));
-        
     keypad key(.clk(clk), .rst(rst), .key_col(key_col), .key_row(key_row), .key_value(key_value));
     
     
