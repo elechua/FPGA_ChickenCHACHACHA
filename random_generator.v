@@ -1,10 +1,10 @@
 module random_generator(
     input rst,
-    output reg [96-1:0] random_edge_order
-    output reg [48-1:0] random_center_order
+    output [96-1:0] random_edge_order,
+    output [48-1:0] random_center_order
 );
-    reg [96-1:0] edge_orders [0:9]  // 일단은 10개만 
-    reg [48-1:0] center_orders [0:9]
+    reg [96-1:0] edge_orders [0:9];  // 일단은 10개만 
+    reg [48-1:0] center_orders [0:9];
     reg [4:0] random_number;  // random number (0-9)
     
     initial begin
@@ -40,7 +40,7 @@ module random_generator(
     //assign random_edge_order <= edge_order[random_number];
     //assign random_center_order <= center_order[random_number];
 
-    assign random_edge_order <= edge_order[0];
-    assign random_center_order <= center_order[0];
+    assign random_edge_order = edge_orders[0];
+    assign random_center_order = center_orders[0];
     
 endmodule
