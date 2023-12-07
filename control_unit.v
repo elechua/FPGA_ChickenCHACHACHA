@@ -10,7 +10,7 @@ module control_unit(
     always @(posedge clk) begin
         if(rst) M <= 3'b000;
         else begin
-            if(M=3'b110)
+            if(M==3'b110)
                 B=1;
             else
                 B=0;
