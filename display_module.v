@@ -1,6 +1,7 @@
 module display_module(
     input clk, rst,
-    input [96-1:0] edge_order, 
+    input [96-1:0] edge_order,
+    input [48-1:0] center_order,
     input [4-1:0] P1_pos, P2_pos, P3_pos, P4_pos,
     //input board,
     output den, hsync, vsync, 
