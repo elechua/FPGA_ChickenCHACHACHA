@@ -1,6 +1,6 @@
 module top_module(
         input clk, rst
-        input 
+        input [3-1:0] key_col
     );
     
     control_unit cu(.clk(clk), .rst(rst), .c(C), .key(key), .go(go), .win(W), .M(M), .A(A), .B(B), .N(N), .M(M));
