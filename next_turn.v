@@ -13,19 +13,19 @@ module next_turn(
         else begin
             case (N)
                 2'b00: if (statecombo_next_turn == 1) begin
-                    if (t == 2'b00) t = 2'b01;
-                    else if (t == 2'b01) t = 2'b00;
+                    if (T == 2'b00) t = 2'b01;
+                    else if (T == 2'b01) t = 2'b00;
                 end
                 2'b01: if (statecombo_next_turn == 1) begin
-                    if (t == 2'b00) t = 2'b01;
-                    else if (t == 2'b01) t = 2'b10;
-                    else if (t == 2'b10) t = 2'b00;
+                    if (T == 2'b00) t = 2'b01;
+                    else if (T == 2'b01) t = 2'b10;
+                    else if (T == 2'b10) t = 2'b00;
                 end
                 2'b10: if (statecombo_next_turn == 1) begin
-                    if (t == 2'b00) t = 2'b01;
-                    else if (t == 2'b01) t = 2'b10;
-                    else if (t == 2'b10) t = 2'b11;
-                    else if (t == 2'b11) t = 2'b00;
+                    if (T == 2'b00) t = 2'b01;
+                    else if (T == 2'b01) t = 2'b10;
+                    else if (T == 2'b10) t = 2'b11;
+                    else if (T == 2'b11) t = 2'b00;
                 end
             endcase
         end
