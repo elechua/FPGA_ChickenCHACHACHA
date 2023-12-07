@@ -5,7 +5,7 @@ module control_unit(
     input [3:0] M,
     output reg A, B,
     output reg [3:0] N,
-    output reg [2:0] M;
+    output reg [2:0] M
     );
 
     always @(posedge clk) begin
