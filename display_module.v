@@ -2,7 +2,7 @@ module display_module(
     input clk, rst,
     input [96-1:0] edge_order, 
     input [4-1:0] P1_pos, P2_pos, P3_pos, P4_pos,
-    input board,
+    //input board,
     output den, hsync, vsync, 
     output [8-1:0] R, G, B,
     output dclk, disp_en
@@ -61,9 +61,9 @@ module display_module(
     assign edge_22_color = edge_order[7:4];
     assign edge_23_color = edge_order[3:0];
     
-    reg [4-1:0] color;
+    //reg [4-1:0] color;
+    
     reg [24-1:0] output_color;
-
     assign R = output_color[23:16];
     assign G = output_color[15:8];
     assign B = output_color[7:0];
@@ -82,23 +82,22 @@ module display_module(
     localparam GRAY = 4'b1011;
     localparam BROWN = 4'b1100;
     
-    localparam BOARD_BLACK = 1;
-    localparam BOARD_BROWN = 0;
-
+    //localparam BOARD_BLACK = 1;
+    //localparam BOARD_BROWN = 0;
     //edgetile 76*76px
-    localparam [24-1:0] RGB_TILE_RED_ART = {8'd255, 8'd0, 8'd0};
-    localparam [24-1:0] RGB_TILE_ORANGE_ART = {8'd255, 8'd140, 8'd0};
-    localparam [24-1:0] RGB_TILE_YELLOW_ART = {8'd255, 8'd255, 8'd0};
-    localparam [24-1:0] RGB_TILE_GREEN_ART = {8'd50, 8'd205, 8'd50};
-    localparam [24-1:0] RGB_TILE_BLUE_ART = {8'd0, 8'd0, 8'd255};
-    localparam [24-1:0] RGB_TILE_NAVY_ART = {8'd0, 8'd0, 8'd128};
-    localparam [24-1:0] RGB_TILE_PURPLE_ART = {8'd148, 8'd0, 8'd211};
-    localparam [24-1:0] RGB_TILE_WHITE_ART = {8'd255, 8'd255, 8'd255};
-    localparam [24-1:0] RGB_TILE_BLACK_ART = {8'd0, 8'd0, 8'd0};
-    localparam [24-1:0] RGB_TILE_SKYBLUE_ART = {8'd135, 8'd206, 8'd235};
-    localparam [24-1:0] RGB_TILE_FORESTGREEN_ART = {8'd0, 8'd100, 8'd0};
-    localparam [24-1:0] RGB_TILE_GRAY_ART = {8'd128, 8'd128, 8'd128};
-    localparam [24-1:0] RGB_TILE_BROWN_ART = {8'd165, 8'd42, 8'd165};
+    localparam [24-1:0] RGB_TILE_RED = {8'd255, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_ORANGE = {8'd255, 8'd140, 8'd0};
+    localparam [24-1:0] RGB_TILE_YELLOW = {8'd255, 8'd255, 8'd0};
+    localparam [24-1:0] RGB_TILE_GREEN = {8'd50, 8'd205, 8'd50};
+    localparam [24-1:0] RGB_TILE_BLUE = {8'd0, 8'd0, 8'd255};
+    localparam [24-1:0] RGB_TILE_NAVY = {8'd0, 8'd0, 8'd128};
+    localparam [24-1:0] RGB_TILE_PURPLE = {8'd148, 8'd0, 8'd211};
+    localparam [24-1:0] RGB_TILE_WHITE = {8'd255, 8'd255, 8'd255};
+    localparam [24-1:0] RGB_TILE_BLACK = {8'd0, 8'd0, 8'd0};
+    localparam [24-1:0] RGB_TILE_SKYBLUE = {8'd135, 8'd206, 8'd235};
+    localparam [24-1:0] RGB_TILE_FORESTGREEN = {8'd0, 8'd100, 8'd0};
+    localparam [24-1:0] RGB_TILE_GRAY = {8'd128, 8'd128, 8'd128};
+    localparam [24-1:0] RGB_TILE_BROWN = {8'd165, 8'd42, 8'd165};
 
  /*  always @ (color) begin
         case (color)
