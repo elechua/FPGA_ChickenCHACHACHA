@@ -61,7 +61,7 @@ module display_module(
     assign edge_22_color = edge_order[7:4];
     assign edge_23_color = edge_order[3:0];
     
-    //reg [4-1:0] color;
+    reg [4-1:0] color;
     
     reg [24-1:0] output_color;
     assign R = output_color[23:16];
@@ -99,25 +99,24 @@ module display_module(
     localparam [24-1:0] RGB_TILE_GRAY = {8'd128, 8'd128, 8'd128};
     localparam [24-1:0] RGB_TILE_BROWN = {8'd165, 8'd42, 8'd165};
 
- /*  always @ (color) begin
+    always @ (color) begin
         case (color)
-            TILE_RED : output_color = RGB_TILE_RED_ART;
-            TILE_ORANGE : output_color = RGB_TILE_ORANGE_ART;
-            TILE_YELLOW : output_color = RGB_TILE_YELLOW_ART;
-            TILE_GREEN : output_color = RGB_TILE_GREEN_ART;
-            TILE_BLUE : output_color = RGB_TILE_BLUE_ART;
-            TILE_NAVY : output_color = RGB_TILE_NAVY_ART;
-            TILE_PURPLE : output_color = RGB_TILE_PURPLE_ART;
-            TILE_WHITE : output_color = RGB_TILE_WHITE_ART;
-            TILE_BLACK : output_color = RGB_TILE_BLACK_ART;
-            TILE_SKYBLUE : output_color = RGB_TILE_SKYBLUE_ART;
-            TILE_FORESTGREEN : output_color = RGB_TILE_FORESTGREEN_ART;
-            TILE_GRAY : output_color = RGB_TILE_GRAY_ART;
-            TILE_BRWON : output_color = RGB_TILE_BROWN_ART;
+            TILE_RED : output_color = RGB_TILE_RED;
+            TILE_ORANGE : output_color = RGB_TILE_ORANGE;
+            TILE_YELLOW : output_color = RGB_TILE_YELLOW;
+            TILE_GREEN : output_color = RGB_TILE_GREEN;
+            TILE_BLUE : output_color = RGB_TILE_BLUE;
+            TILE_NAVY : output_color = RGB_TILE_NAVY;
+            TILE_PURPLE : output_color = RGB_TILE_PURPLE;
+            TILE_WHITE : output_color = RGB_TILE_WHITE;
+            TILE_BLACK : output_color = RGB_TILE_BLACK;
+            TILE_SKYBLUE : output_color = RGB_TILE_SKYBLUE;
+            TILE_FORESTGREEN : output_color = RGB_TILE_FORESTGREEN;
+            TILE_GRAY : output_color = RGB_TILE_GRAY;
+            TILE_BRWON : output_color = RGB_TILE_BROWN;
         endcase
-    end */
+    end
            
-
     //localparam RGB_BORDERLINE = 8'b;
     //localparam RGB_RIGHTEDGE = 8'b;
     //localparam RGB_GAPSPACE = 8'b;
@@ -363,11 +362,11 @@ module display_module(
         TILE_P4_ART[7] = 8'b00000000;
     end
     
-    reg [3-1:0] counter_row; // the square the pixels are currently on
+    reg [3-1:0] counter_row;
     reg [4-1:0] counter_col;
-    reg [6:0] square_x; // coords of the counter within the board square
+    reg [6:0] square_x;
     reg [6:0] square_y;
-    reg [4:0] art_x; // coords on 8x8 artwork grid within the square
+    reg [4:0] art_x;
     reg [4:0] art_y;
 
     wire if_edge;
@@ -422,7 +421,7 @@ module display_module(
     assign edge_21 = (counter_row == 4 && counter_col == 1);
     assign edge_22 = (counter_row == 3 && counter_col == 1);
     assign edge_23 = (counter_row == 2 && counter_col == 1);
-
+    //if edge는 or로 해야 하는 건가?
     assign if_edge = edge_0 && edge_1 && edge_2 && edge_3 && edge_4 && edge_5 && edge_6 && edge_7 && edge_8 && edge_9 && edge_10 && edge_11 && edge_12 && edge_13 && edge_14 && edge_15 && edge_16 && edge_17 && edge_18 && edge_19 && edge_20 && edge_21 && edge_22 && edge_23;
 
     always @(counter_h) begin
@@ -476,15 +475,15 @@ module display_module(
     assign in_board = (square_x >= 2 && square_x <= 78 && square_y >= 2 && square_y <= 78);
 
     always @ (posedge clk or posedge rst) begin
-        if(rst) color <= RGB_TILE_BLACK_ART;
+        if(rst) color <= RGB_TILE_BLACK;
         else begin
             if (in_border) begin
                 if (counter_row == 2 && counter_col == 2 || counter_row == 2 && counter_col == 3 || counter_row == 2 && counter_col == 4 || counter_row == 2 && counter_col == 5 || counter_row == 2 && counter_col == 6 || counter_row == 2 && counter_col == 7 ||
                     counter_row == 5 && counter_col == 2 || counter_row == 5 && counter_col == 3 || counter_row == 5 && counter_col == 4 || counter_row == 5 && counter_col == 5 || counter_row == 5 && counter_col == 6 || counter_row == 5 && counter_col == 7 ||
                     counter_col == 9)
-                    output_color <= RGB_TILE_BLACK_ART;
+                    output_color <= RGB_TILE_BLACK;
                 else
-                    output_color <= RGB_TILE_WHITE_ART;
+                    output_color <= RGB_TILE_WHITE;
             end
             else if (in_board) begin
                 // 가운데 타일
@@ -492,88 +491,88 @@ module display_module(
                 // ROW 4 COL 2 ~ 7
                 //1
                 if (counter_row == 3 && counter_col == 2) begin
-                    if (TILE_ONE_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_ONE_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //2
                 else if (counter_row == 3 && counter_col == 3) begin
-                    if (TILE_TWO_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_TWO_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //3
                 else if (counter_row == 3 && counter_col == 4) begin
-                    if (TILE_THREE_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_THREE_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //4
                 else if (counter_row == 3 && counter_col == 5) begin
-                    if (TILE_FOUR_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_FOUR_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //5
                 else if (counter_row == 3 && counter_col == 6) begin
-                    if (TILE_FIVE_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_FIVE_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //6
                 else if (counter_row == 3 && counter_col == 7) begin
-                    if (TILE_SIX_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_SIX_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //7
                 else if (counter_row == 4 && counter_col == 2) begin
-                    if (TILE_SEVEN_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_SEVEN_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //8
                 else if (counter_row == 4 && counter_col == 3) begin
-                    if (TILE_EIGHT_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_EIGHT_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //9
                 else if (counter_row == 4 && counter_col == 4) begin
-                    if (TILE_NINE_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_NINE_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //0
                 else if (counter_row == 4 && counter_col == 5) begin
-                    if (TILE_ZERO_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_ZERO_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //#
                 else if (counter_row == 4 && counter_col == 6) begin
-                    if (TILE_SHARP_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_SHARP_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //*
                 else if (counter_row == 4 && counter_col == 7) begin
-                    if (TILE_STAR_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_STAR_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //화살표 타일
                 //북서쪽
                 else if (counter_row == 2 && counter_col == 2) begin
-                    if (TILE_NW_ARROW_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_NW_ARROW_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //북동쪽
                 else if (counter_row == 2 && counter_col == 7) begin
-                    if (TILE_NE_ARROW_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_NE_ARROW_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //남동쪽
                 else if (counter_row == 5 && counter_col == 7) begin
-                    if (TILE_SE_ARROW_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_SE_ARROW_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 //남서쪽
                 else if (counter_row == 5 && counter_col == 2) begin
-                    if (TILE_SW_ARROW_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE_ART;
-                    else output_color <= RGB_TILE_BLACK_ART;
+                    if (TILE_SW_ARROW_ART[art_y][art_x]) output_color <= RGB_TILE_WHITE;
+                    else output_color <= RGB_TILE_BLACK;
                 end
                 
                 //외곽 타일
-                /*else if (if_edge)
+                else if (if_edge)
                     if (edge_0)
                         if (P1_pos == 0)
                             if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
@@ -601,7 +600,7 @@ module display_module(
                         else if (P4_pos == 1)    
                             if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_1_color;
-                        else color <= edge_0_color;
+                        else color <= edge_1_color;
                     else if (edge_2)
                         if (P1_pos == 2)
                             if (TILE_P1_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
@@ -657,7 +656,7 @@ module display_module(
                         else if (P4_pos == 5)    
                             if (TILE_P4_ART[art_y][art_x]) color <= RGB_TILE_BROWN_ART;
                             else color <= edge_5_color;
-                        else color <= edge_5_color;*/
+                        else color <= edge_5_color;
 
                 //6 ~ 23 도 해야됨....
                             
