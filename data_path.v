@@ -12,7 +12,7 @@ module data_path(
     
     check_same cs(.clk(clk), .position_data(position_data), .A(A), .result(go));
     check_win cw(.T(T), .B(B), .N(N), .W(W), .afterposition_data(afterposition_data));
-    next_turn nw(.rst(rst), .T(T), .N(N), .statecombo_next_turn(statecombo_next_turn), .result(next_turn_result));
+    next_turn nw(.rst(rst), .N(N), .statecombo_next_turn(statecombo_next_turn), .result(T));
 
     assign tile_info = afterposition_data;
     
