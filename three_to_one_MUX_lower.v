@@ -1,7 +1,7 @@
 module three_to_one_MUX_lower(
     input [2-1:0] T,
     input [2-1:0] N,
-    input [5-1:0] p1_cnt, p2_cnt, p3_cnt,
+    input [5-1:0] p1_cnt, p2_cnt, p3_cnt, p4_cnt,
     output reg [5-1:0] out
 );
     always @ (*) begin
