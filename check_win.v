@@ -1,5 +1,5 @@
 module check_win(
-    input clk,
+    input clk, rst,
     input [2-1:0] T,
     input [5-1:0] N,
     input B,
