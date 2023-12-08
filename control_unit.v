@@ -3,7 +3,6 @@ module control_unit(
     input [4-1:0] key, 
     input c, go, win,
     output reg A, B, WR,
-    output reg [2-1:0] N,
     output reg [2:0] M
     );
 
@@ -19,18 +18,18 @@ module control_unit(
                     WR <= 1;
                     begin
                         if(c == 0) M <= 3'b000;
-                        else if(c == 1) M <= 3'b001;
+                        else M <= 3'b001;
                     end
                 3'b001:
                     if(key <= 4'h1 | key >= 4'h5) M <= 3'b001;
                     else begin
-                        N <= key;
                         M <= 3'b010;
                     end
                 3'b010:
+                    WR <= 0;
                     begin
-                        WR <= 0;
-                        M <= M + 3'b001;
+                        if(c == 0) M <= 3'b010;
+                        else M <= 3'b011;
                     end
                 3'b011:
                     if(key == 0) begin
@@ -51,7 +50,8 @@ module control_unit(
                         A <= 0;
                     end
                 3'b101:
-                    M <= 3'b011;
+                    if(c == 0) M <= 3'b011;
+                    else M <= 3'b110;
                 3'b110:
                     if(win == 0) M <= 3'b011;
                     else if(win == 1) M <= 3'b111;
