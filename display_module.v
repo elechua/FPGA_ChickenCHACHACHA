@@ -113,7 +113,7 @@ module display_module(
             SKYBLUE : output_color = RGB_TILE_SKYBLUE;
             FORESTGREEN : output_color = RGB_TILE_FORESTGREEN;
             GRAY : output_color = RGB_TILE_GRAY;
-            BRWON : output_color = RGB_TILE_BROWN;
+            BROWN : output_color = RGB_TILE_BROWN;
         endcase
     end
 
