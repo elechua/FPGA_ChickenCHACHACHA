@@ -416,7 +416,7 @@ module display_module(
     assign edge_22 = (counter_row == 3 && counter_col == 1);
     assign edge_23 = (counter_row == 2 && counter_col == 1);
     //if edge는 or로 해야 하는 건가?
-    assign if_edge = edge_0 && edge_1 && edge_2 && edge_3 && edge_4 && edge_5 && edge_6 && edge_7 && edge_8 && edge_9 && edge_10 && edge_11 && edge_12 && edge_13 && edge_14 && edge_15 && edge_16 && edge_17 && edge_18 && edge_19 && edge_20 && edge_21 && edge_22 && edge_23;
+    assign if_edge = edge_0 || edge_1 || edge_2 || edge_3 || edge_4 || edge_5 || edge_6 || edge_7 || edge_8 || edge_9 || edge_10 || edge_11 || edge_12 || edge_13 || edge_14 || edge_15 || edge_16 || edge_17 || edge_18 || edge_19 || edge_20 || edge_21 || edge_22 || edge_23;
 
     always @(counter_h) begin
         if (counter_h <= 'd210) begin counter_col <= 0; square_x <= counter_h; end
