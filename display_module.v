@@ -559,7 +559,7 @@ module display_module(
             end
             else if ( M == 3'b111 ) begin
             end
-            else color <= RGB_TILE_BLACK;
+            else output_color <= RGB_TILE_BLACK;
         end
         else if ( counter_col == 9 && counter_low == 3 ) begin
             if ( M == 3'b001 ) begin
@@ -568,10 +568,12 @@ module display_module(
             end
             else if ( M == 3'b111) begin
             end
+            else output_color <= RGB_TILE_BLACK;
         end
         else if ( counter_col == 9 && counter_low == 4 ) begin
             if ( M == 3'b011) begin
             end
+            else output_color <= RGB_TILE_BLACK;
         end
         else begin
             if (in_border) begin
