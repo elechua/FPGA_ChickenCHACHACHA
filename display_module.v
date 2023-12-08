@@ -1,5 +1,7 @@
 module display_module(
     input clk, rst,
+    input [3-1:0] M,
+    input [2-1:0] T,
     input [96-1:0] edge_order,
     input [48-1:0] center_order,
     input [4-1:0] P1_pos, P2_pos, P3_pos, P4_pos,
@@ -355,6 +357,26 @@ module display_module(
         TILE_P4_ART[6] = 8'b00010000;
         TILE_P4_ART[7] = 8'b00000000;
     end
+
+    reg [16-1:0] TILE_LOADING_ART [32-1:0];
+    initial begin
+        TILE_P4_ART[0]     = 8'b00000000000000000000000000000000;
+        TILE_P4_ART[1]     = 8'b00000000000000000000000000000000;
+        TILE_P4_ART[2]     = 8'b00000000000000000000000000000000;
+        TILE_P4_ART[3]     = 8'b00000000000000000000000000000000;
+        TILE_P4_ART[4]     = 8'b00000000000000000000000000000000;
+        TILE_P4_ART[5]     = 8'b00000000000000000010000110000100;
+        TILE_P4_ART[6]     = 8'b00000000000000000101001001000100;
+        TILE_P4_ART[7]     = 8'b00000000000000001111101001000100;
+        TILE_P4_ART[8]     = 8'b00000000000000001000101001000100;
+        TILE_P4_ART[9]     = 8'b00000000000000001000100110011100;
+        TILE_P4_ART[10]    = 8'b00000000000000000000000000000000;
+        TILE_P4_ART[11]    = 8'b00000000000000000000000000000000;
+        TILE_P4_ART[12]    = 8'b00000000000000000000000000000000;
+        TILE_P4_ART[13]    = 8'b00000000000000000000000000000000;
+        TILE_P4_ART[14]    = 8'b00000000000000000000000000000000;
+        TILE_P4_ART[15]    = 8'b00000000000000000000000000000000;
+    end
     
     reg [3-1:0] counter_row;
     reg [4-1:0] counter_col;
@@ -525,7 +547,32 @@ module display_module(
     assign in_board = (square_x >= 2 && square_x <= 78 && square_y >= 2 && square_y <= 78);
 
     always @ (posedge clk or posedge rst) begin
-        if(rst) color <= RGB_TILE_BLACK;
+        if(rst) output_color <= RGB_TILE_BLACK;
+        else if ( counter_col == 9 && counter_low == 2 ) begin
+            if ( M == 3'b000 || M == 3'b010 ) begin
+            end
+            else if ( M == 3'b001 ) begin
+            end
+            else if ( M == 3'b011 ) begin
+            end
+            else if ( M == 3'b101 ) begin
+            end
+            else if ( M == 3'b111 ) begin
+            end
+            else color <= RGB_TILE_BLACK;
+        end
+        else if ( counter_col == 9 && counter_low == 3 ) begin
+            if ( M == 3'b001 ) begin
+            end
+            else if ( M == 3'b011 ) begin
+            end
+            else if ( M == 3'b111) begin
+            end
+        end
+        else if ( counter_col == 9 && counter_low == 4 ) begin
+            if ( M == 3'b011) begin
+            end
+        end
         else begin
             if (in_border) begin
                 if (counter_row == 2 && counter_col == 2 || counter_row == 2 && counter_col == 3 || counter_row == 2 && counter_col == 4 || counter_row == 2 && counter_col == 5 || counter_row == 2 && counter_col == 6 || counter_row == 2 && counter_col == 7 ||
