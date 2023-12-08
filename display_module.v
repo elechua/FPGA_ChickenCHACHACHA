@@ -362,6 +362,8 @@ module display_module(
     reg [6:0] square_y;
     reg [4:0] art_x;
     reg [4:0] art_y;
+    reg [6:0] col9_x;
+    reg [5:0] col9_y;
 
     wire if_edge;
     
@@ -421,7 +423,7 @@ module display_module(
     always @(counter_h) begin
         if (counter_h <= 'd210) begin counter_col <= 0; square_x <= counter_h; end
     	else if (counter_h <= 'd290) begin counter_col <= 1; square_x <= counter_h - 'd210; end
-    	else if (counter_h <= 'd370) begin counter_col <= 2; square_x <= counter_h - 'd290; end
+        else if (counter_h <= 'd370) begin counter_col <= 2; square_x <= counter_h - 'd290; end
     	else if (counter_h <= 'd450) begin counter_col <= 3; square_x <= counter_h - 'd370; end
     	else if (counter_h <= 'd530) begin counter_col <= 4; square_x <= counter_h - 'd450; end
     	else if (counter_h <= 'd610) begin counter_col <= 5; square_x <= counter_h - 'd530; end
@@ -463,6 +465,60 @@ module display_module(
     	else if (square_y >= 52 && square_y <= 61) art_y <= 5;
     	else if (square_y >= 62 && square_y <= 71) art_y <= 6;
     	else 				     art_y <= 7;	
+    end
+
+    always @(square_x) begin
+        if 	    (square_x <= 5) col9_x <= 0;
+        else if (square_x >= 6 && square_x <= 10) col9_x <= 1;
+        else if (square_x >= 11 && square_x <= 15) col9_x <= 2;
+        else if (square_x >= 16 && square_x <= 20) col9_x <= 3;
+        else if (square_x >= 21 && square_x <= 25) col9_x <= 4;
+        else if (square_x >= 26 && square_x <= 30) col9_x <= 5;
+        else if (square_x >= 31 && square_x <= 35) col9_x <= 6;
+        else if (square_x >= 36 && square_x <= 40) col9_x <= 7;
+        else if (square_x >= 41 && square_x <= 45) col9_x <= 8;
+        else if (square_x >= 46 && square_x <= 50) col9_x <= 9;
+        else if (square_x >= 51 && square_x <= 55) col9_x <= 10;
+        else if (square_x >= 56 && square_x <= 60) col9_x <= 11;
+        else if (square_x >= 61 && square_x <= 65) col9_x <= 12;
+        else if (square_x >= 66 && square_x <= 70) col9_x <= 13;
+        else if (square_x >= 71 && square_x <= 75) col9_x <= 14;
+        else if (square_x >= 76 && square_x <= 80) col9_x <= 15;
+        else if (square_x >= 81 && square_x <= 85) col9_x <= 16;
+        else if (square_x >= 86 && square_x <= 90) col9_x <= 17;
+        else if (square_x >= 91 && square_x <= 95) col9_x <= 18;
+        else if (square_x >= 96 && square_x <= 100) col9_x <= 19;
+        else if (square_x >= 101 && square_x <= 105) col9_x <= 20;
+        else if (square_x >= 106 && square_x <= 110) col9_x <= 21;
+        else if (square_x >= 111 && square_x <= 115) col9_x <= 22;
+        else if (square_x >= 116 && square_x <= 120) col9_x <= 23;
+        else if (square_x >= 121 && square_x <= 125) col9_x <= 24;
+        else if (square_x >= 126 && square_x <= 130) col9_x <= 25;
+        else if (square_x >= 131 && square_x <= 135) col9_x <= 26;
+        else if (square_x >= 136 && square_x <= 140) col9_x <= 27;
+        else if (square_x >= 141 && square_x <= 145) col9_x <= 28;
+        else if (square_x >= 146 && square_x <= 150) col9_x <= 39;
+        else if (square_x >= 151 && square_x <= 155) col9_x <= 30;
+    	else 				     col9_x <= 31;	
+    end
+
+    always @(square_y) begin
+        if (square_y <= 5) col9_y <= 0;
+        else if (square_y >= 6 && square_y <= 10) col9_y <= 1;
+        else if (square_y >= 11 && square_y <= 15) col9_y <= 2;
+        else if (square_y >= 16 && square_y <= 20) col9_y <= 3;
+        else if (square_y >= 21 && square_y <= 25) col9_y <= 4;
+        else if (square_y >= 26 && square_y <= 30) col9_y <= 5;
+        else if (square_y >= 31 && square_y <= 35) col9_y <= 6;
+        else if (square_y >= 36 && square_y <= 40) col9_y <= 7;
+        else if (square_y >= 41 && square_y <= 45) col9_y <= 8;
+        else if (square_y >= 46 && square_y <= 50) col9_y <= 9;
+        else if (square_y >= 51 && square_y <= 55) col9_y <= 10;
+        else if (square_y >= 56 && square_y <= 60) col9_y <= 11;
+        else if (square_y >= 61 && square_y <= 65) col9_y <= 12;
+        else if (square_y >= 66 && square_y <= 70) col9_y <= 13;
+        else if (square_y >= 71 && square_y <= 75) col9_y <= 14;
+        else                     col9_y <=15;
     end
 
     assign in_border = (square_x<=2 || square_x>=78 || square_y <=2 || square_y >=78);
