@@ -20,7 +20,8 @@ module top_module(
         wire statecombo_next_turn;
         assign statecombo_next_turn = M[2] & (~M[1]) & M[0];
         
-        control_unit cu(.clk(clk), .rst(rst), .c(C), .key(key), .go(go), .win(W), .A(A), .B(B), .N(N), .M(M)); //text lcd 출력, N에 대한 DFF 설계해야 함, c에 입력 추가해야 함
+        control_unit cu(.clk(clk), .rst(rst), .c(C), .key(key), .go(go), .win(W), .A(A), .B(B), .N(N), .M(M)); //text lcd 출력, c에 입력 추가해야 함
+        N_DFF ff(.key(key), .M(M), .N(N));
         data_path dp(.clk(clk), .rst(rst), .statecombo_next_turn(statecombo_next_turn), .N(N), .position_data(position_data), .A(A), .B(B), .W(W), .go(go), .C(C), .tile_infor(tile_info)); //tb 검증 완료 ; c 입력 추가해야 함
         two_to_one_MUX ttom(.key(key), .tile_info(tile_info), .A(A), .ADDR_IN(ADDR_IN)); //tb 검증 완료
         data_memory dmem(.clk(clk), .WR(WR), .ADDR(ADDR_IN), .EDGE_DATA_IN(random_edge_order), .CENTER_DATA_IN(random_center_order), .DATA_OUT(position_data)); //tb 검증 완료 ; WR 어디서 입력 받을 건지 정해야 함
