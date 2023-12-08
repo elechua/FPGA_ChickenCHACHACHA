@@ -4,7 +4,7 @@ module data_path(
     input [2-1:0] N,
     input [4-1:0] position_data,
     input A, B,
-    output W, go, C, 
+    output W, go, 
     output [5-1:0] tile_info
     );
     
