@@ -20,7 +20,7 @@ module top_module(
         wire statecombo_next_turn;
         assign statecombo_next_turn = M[2] & (~M[1]) & M[0];
         
-        control_unit cu(.clk(clk), .rst(rst), .c(C), .key(key), .go(go), .win(W), .A(A), .B(B), .WR(WR), .N(N), .M(M)); //text lcd 출력, c에 입력 추가해야 함
+        control_unit cu(.clk(clk), .rst(rst), .c(C), .key(key), .go(go), .win(W), .A(A), .B(B), .WR(WR), .M(M)); //text lcd 출력
         N_DFF ff(.key(key), .M(M), .N(N));
         data_path dp(.clk(clk), .rst(rst), .statecombo_next_turn(statecombo_next_turn), .N(N), .position_data(position_data), .A(A), .B(B), .W(W), .go(go), .C(C), .tile_infor(tile_info)); //tb 검증 완료 ; c 입력 추가해야 함
         two_to_one_MUX ttom(.key(key), .tile_info(tile_info), .A(A), .ADDR_IN(ADDR_IN)); //tb 검증 완료
