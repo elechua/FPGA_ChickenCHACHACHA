@@ -21,7 +21,7 @@ module top_module(
         
         control_unit cu(.clk(clk), .rst(rst), .c(C), .key(key), .go(go), .win(W), .A(A), .B(B), .WR(WR), .M(M)); //text lcd 출력
         N_DFF ff(.key(key), .M(M), .N(N));
-        data_path dp(.clk(clk), .rst(rst), .statecombo_next_turn(statecombo_next_turn), .N(N), .position_data(position_data), .A(A), .B(B), .W(W), .go(go), .tile_infor(tile_info)); //tb 검증 완료 ;
+        data_path dp(.clk(clk), .rst(rst), .statecombo_next_turn(statecombo_next_turn), .N(N), .position_data(position_data), .A(A), .B(B), .W(W), .go(go), .tile_info(tile_info)); //tb 검증 완료 ;
         two_to_one_MUX ttom(.key(key), .tile_info(tile_info), .A(A), .ADDR_IN(ADDR_IN)); //tb 검증 완료
         data_memory dmem(.clk(clk), .WR(WR), .ADDR(ADDR_IN), .EDGE_DATA_IN(random_edge_order), .CENTER_DATA_IN(random_center_order), .DATA_OUT(position_data)); //tb 검증 완료 ;
         random_generator rg(.rst(rst), .random_edge_order(random_edge_order), .random_center_order(random_center_order)); // 일단 첫번째 경우 출력하는 걸로 해놓음 ; 추후에 pseudo rng 설계해야 함
