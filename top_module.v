@@ -16,7 +16,6 @@ module top_module(
         wire [5-1:0] tile_info;
         wire [6-1:0] ADDR_IN;
         wire [4-1:0] position_data;
-        wire [5-1:0] tile_info;
         wire statecombo_next_turn;
         assign statecombo_next_turn = M[2] & (~M[1]) & M[0];
         
