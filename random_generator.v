@@ -34,7 +34,7 @@ module random_generator(
 
     always @ (posedge rst) begin
         if (rst)
-            random_number <= $urandom % 10;
+            random_number <= $random % 10;
     end
 
     //assign random_edge_order <= edge_order[random_number];
