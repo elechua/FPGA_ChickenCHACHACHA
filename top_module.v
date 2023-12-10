@@ -22,7 +22,7 @@ module top_module(
         wire I;
         assign statecombo_next_turn = M[2] & (~M[1]) & M[0];
         
-        control_unit cu(.clk(clk), .rst(rst), .c(C), .key(key), .go(go), .win(W), .A(A), .D(D), .WR(WR), .M(M), .I(I)); //text lcd 출력
+        control_unit cu(.clk(clk), .rst(rst), .c(C), .key(key), .go(go), .win(W), .A(A), .D(D), .WR(WR), .M(M)); //text lcd 출력
         N_DFF ff(.key(key), .M(M), .N(N));
         data_path dp(.clk(clk), .rst(rst), .statecombo_next_turn(statecombo_next_turn), .N(N), .position_data(position_data), .A(A), .D(D), .W(W), .go(go), .tile_info(tile_info),
                      .p1_cnt(p1_cnt),  .p2_cnt(p2_cnt), .p3_cnt(p3_cnt), .p4_cnt(p4_cnt), .M(M)); //tb 검증 완료 ;
