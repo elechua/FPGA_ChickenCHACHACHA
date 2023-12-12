@@ -9,7 +9,7 @@ module clk_oscillator(
             cnt = 4'd0;
             clk_keypad = 0;
         end
-        else if (cnt2 >= 4'd25) begin
+        else if (cnt >= 4'd25) begin
             clk_keypad = ~clk_keypad;
             cnt = 4'd0;
         end
