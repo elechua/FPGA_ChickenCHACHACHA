@@ -1,4 +1,4 @@
-module clk_divider(
+module clk_oscillator(
     input clk, rst,
     output clk_keypad
     );
