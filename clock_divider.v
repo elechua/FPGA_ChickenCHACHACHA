@@ -1,6 +1,6 @@
 module clk_oscillator(
     input clk, rst,
-    output clk_keypad
+    output reg clk_keypad
     );
     reg [4-1:0] cnt;
     
