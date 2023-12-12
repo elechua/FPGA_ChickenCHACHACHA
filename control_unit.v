@@ -3,9 +3,11 @@ module control_unit(
     input [4-1:0] key, 
     input c, go, win,
     output reg A, D, WR,
-    output reg [2:0] M
+    output reg [3-1:0] M
     );
-
+    initial begin
+        M <= 3'b000;
+    end
     always @(posedge clk) begin
         if(rst) M <= 3'b000;
         else begin
@@ -25,7 +27,7 @@ module control_unit(
                     if(key <= 4'h1 | key >= 4'h5) begin
                         M <= 3'b001;
                     end
-                    else begin
+                    else if (key >= 4'h2 & key <= 4'h4) begin
                         M <= 3'b010;
                     end
                 3'b010:
