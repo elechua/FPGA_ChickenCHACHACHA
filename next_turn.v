@@ -1,6 +1,6 @@
 module next_turn(
     input rst,
-    input [2-1:0] N,
+    input [3-1:0] N,
     //input [2-1:0] T,
     input statecombo_next_turn,
     output [2-1:0] result
@@ -12,16 +12,16 @@ module next_turn(
         if (rst) t = 2'b0;
         else begin
             case (N)
-                2'b00: if (statecombo_next_turn == 1) begin
+                3'b010: if (statecombo_next_turn == 1) begin
                     if (t == 2'b00) t = 2'b01;
                     else if (t == 2'b01) t = 2'b00;
                 end
-                2'b01: if (statecombo_next_turn == 1) begin
+                3'b011: if (statecombo_next_turn == 1) begin
                     if (t == 2'b00) t = 2'b01;
                     else if (t == 2'b01) t = 2'b10;
                     else if (t == 2'b10) t = 2'b00;
                 end
-                2'b10: if (statecombo_next_turn == 1) begin
+                3'b100: if (statecombo_next_turn == 1) begin
                     if (t == 2'b00) t = 2'b01;
                     else if (t == 2'b01) t = 2'b10;
                     else if (t == 2'b10) t = 2'b11;
