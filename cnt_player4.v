@@ -13,7 +13,7 @@ module cnt_player4(
             else if (N == 3'd3)
                 p4_cnt = 5'b11111;
             else if (N == 3'd4)
-                p4_cnt = 5'b11000;
+                p4_cnt = 5'b10010;
         end
         else if (D == 1) begin
             if (p_da4 == 1) begin 
