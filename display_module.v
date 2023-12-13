@@ -537,6 +537,26 @@ module display_module(
         TILE_WIN_ART[14]    = 32'b00000000000000000000000000000000;
         TILE_WIN_ART[15]    = 32'b00000000000000000000000000000000;
     end
+
+    reg [16-1:0] TILE_WRONG_ART [32-1:0];
+    initial begin
+        TILE_WRONG_ART[0]     = 32'b00000000000000000000000000000000;
+        TILE_WRONG_ART[1]     = 32'b00000000000000000000000000000000;
+        TILE_WRONG_ART[2]     = 32'b00000000000000000000000000000000;
+        TILE_WRONG_ART[3]     = 32'b00000000000000000000000000000000;
+        TILE_WRONG_ART[4]     = 32'b00000000000000000000000000000000;
+        TILE_WRONG_ART[5]     = 32'b00111100100010011000111010000010;
+        TILE_WRONG_ART[6]     = 32'b00000010100110100101001010010010;
+        TILE_WRONG_ART[7]     = 32'b01110010101010100101111010010010;
+        TILE_WRONG_ART[8]     = 32'b01100010110010100100101001010100;
+        TILE_WRONG_ART[9]     = 32'b01011100100010011001001000101000;
+        TILE_WRONG_ART[10]    = 32'b00000000000000000000000000000000;
+        TILE_WRONG_ART[11]    = 32'b00000000000000000000000000000000;
+        TILE_WRONG_ART[12]    = 32'b00000000000000000000000000000000;
+        TILE_WRONG_ART[13]    = 32'b00000000000000000000000000000000;
+        TILE_WRONG_ART[14]    = 32'b00000000000000000000000000000000;
+        TILE_WRONG_ART[15]    = 32'b00000000000000000000000000000000;
+    end
     
     reg [3-1:0] counter_row;
     reg [4-1:0] counter_col;
@@ -717,17 +737,27 @@ module display_module(
                 if (TILE_SELECT_ART[col9_y][col9_x]) color <= WHITE;
                 else color <= BLACK;
             end
-            else if ( M == 3'b011 ) begin
-                if (TILE_SELECT_ART[col9_y][col9_x]) color <= WHITE;
-                else color <= BLACK;
+            else if ( M == 3'b011 || M == 3'b111 ) begin
+                if ( T == 2'b00 ) begin
+                    if (TILE_PLAYER1_ART[col9_y][col9_x]) color <= WHITE;
+                    else color <= BLACK;
+                end
+                else if (T == 2'b01) begin
+                    if (TILE_PLAYER2_ART[col9_y][col9_x]) color <= WHITE;
+                    else color <= BLACK;
+                end
+                else if (T == 2'b10) begin
+                    if (TILE_PLAYER3_ART[col9_y][col9_x]) color <= WHITE;
+                    else color <= BLACK;
+                end
+                else begin
+                    if (TILE_PLAYER4_ART[col9_y][col9_x]) color <= WHITE;
+                    else color <= BLACK;
+                end
             end
             else if ( M == 3'b101 ) begin
-                if (TILE_SELECT_ART[col9_y][col9_x]) color <= WHITE;
+                if (TILE_WRONG_ART[col9_y][col9_x]) color <= WHITE;
                 else color <= BLACK;
-            end
-            else if ( M == 3'b111 ) begin
-                if (TILE_SELECT_ART[col9_y][col9_x]) color <= WHITE;
-                else color <= BLACK;   
             end
             else color <= BLACK;
         end
@@ -737,13 +767,19 @@ module display_module(
                 else color <= BLACK;
             end
             else if ( M == 3'b011 ) begin
+                if (TILE_SELECT_ART[col9_y][col9_x]) color <= WHITE;
+                else color <= BLACK;
             end
             else if ( M == 3'b111) begin
+                if (TILE_WIN_ART[col9_y][col9_x]) color <= WHITE;
+                else color <= BLACK;
             end
             else color <= BLACK;
         end
         else if ( counter_col == 9 && counter_row == 4 ) begin
             if ( M == 3'b011) begin
+                if (TILE_CARD_ART[col9_y][col9_x]) color <= WHITE;
+                else color <= BLACK;
             end
             else color <= BLACK;
         end
