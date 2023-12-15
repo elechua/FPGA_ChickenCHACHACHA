@@ -11,10 +11,6 @@ module control_unit(
     always @(posedge clk) begin
         if(rst) M <= 3'b000;
         else begin
-            if(M==3'b110)
-                D=1;
-            else
-                D=0;
             if(M==3'b000 | M==3'b001)
                 WR <= 1;
             else
@@ -67,4 +63,12 @@ module control_unit(
             endcase
         end
     end
+
+    always @ ( M or go ) begin
+        if ( M == 100 && go == 1 )
+            D <= 1;
+        else
+            D <= 0;
+    end
+    
 endmodule
