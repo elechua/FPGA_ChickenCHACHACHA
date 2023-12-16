@@ -38,6 +38,19 @@ module display_module(
     edge_22_color,
     edge_23_color;
 
+    wire [3:0] center_0_color,
+    center_1_color,
+    center_2_color,
+    center_3_color,
+    center_4_color,
+    center_5_color,
+    center_6_color,
+    center_7_color,
+    center_8_color,
+    center_9_color,
+    center_10_color,
+    center_11_color;
+    
     assign edge_0_color = edge_order[95:92];
     assign edge_1_color = edge_order[91:88];
     assign edge_2_color = edge_order[87:84];
