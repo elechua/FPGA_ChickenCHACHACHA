@@ -831,58 +831,91 @@ module display_module(
                 end
                 //2
                 else if (counter_row == 3 && counter_col == 3) begin
-                    if (TILE_TWO_ART[art_y][art_x]) color <= WHITE;
-                    else color <= BLACK;
+                    if ( M == 3'b101 | M == 3'b110) color <= center_1_color;
+                    else begin
+                        if (TILE_TWO_ART[art_y][art_x]) color <= WHITE;
+                        else color <= BLACK;
+                    end
                 end
                 //3
                 else if (counter_row == 3 && counter_col == 4) begin
-                    if (TILE_THREE_ART[art_y][art_x]) color <= WHITE;
-                    else color <= BLACK;
+                    if ( M == 3'b101 | M == 3'b110) color <= center_2_color;
+                    else begin
+                        if (TILE_THREE_ART[art_y][art_x]) color <= WHITE;
+                        else color <= BLACK;
+                    end
                 end
                 //4
                 else if (counter_row == 3 && counter_col == 5) begin
-                    if (TILE_FOUR_ART[art_y][art_x]) color <= WHITE;
-                    else color <= BLACK;
+                    if ( M == 3'b101 | M == 3'b110) color <= center_3_color;
+                    else begin
+                        if (TILE_FOUR_ART[art_y][art_x]) color <= WHITE;
+                        else color <= BLACK;
+                    end
                 end
                 //5
                 else if (counter_row == 3 && counter_col == 6) begin
-                    if (TILE_FIVE_ART[art_y][art_x]) color <= WHITE;
-                    else color <= BLACK;
+                    if ( M == 3'b101 | M == 3'b110) color <= center_4_color;
+                    else begin
+                        if (TILE_FIVE_ART[art_y][art_x]) color <= WHITE;
+                        else color <= BLACK;
+                    end
                 end
                 //6
                 else if (counter_row == 3 && counter_col == 7) begin
-                    if (TILE_SIX_ART[art_y][art_x]) color <= WHITE;
-                    else color <= BLACK;
+                    if ( M == 3'b101 | M == 3'b110) color <= center_5_color;
+                    else begin
+                        if (TILE_SIX_ART[art_y][art_x]) color <= WHITE;
+                        else color <= BLACK;
+                    end
                 end
                 //7
                 else if (counter_row == 4 && counter_col == 2) begin
-                    if (TILE_SEVEN_ART[art_y][art_x]) color <= WHITE;
-                    else color <= BLACK;
+                    if ( M == 3'b101 | M == 3'b110) color <= center_6_color;
+                    else begin
+                        if (TILE_SEVEN_ART[art_y][art_x]) color <= WHITE;
+                        else color <= BLACK;
+                    end
                 end
                 //8
                 else if (counter_row == 4 && counter_col == 3) begin
-                    if (TILE_EIGHT_ART[art_y][art_x]) color <= WHITE;
-                    else color <= BLACK;
+                    if ( M == 3'b101 | M == 3'b110) color <= center_7_color;
+                    else begin
+                        if (TILE_EIGHT_ART[art_y][art_x]) color <= WHITE;
+                        else color <= BLACK;
+                    end
                 end
                 //9
                 else if (counter_row == 4 && counter_col == 4) begin
-                    if (TILE_NINE_ART[art_y][art_x]) color <= WHITE;
-                    else color <= BLACK;
+                    if ( M == 3'b101 | M == 3'b110) color <= center_8_color;
+                    else begin
+                        if (TILE_NINE_ART[art_y][art_x]) color <= WHITE;
+                        else color <= BLACK;
+                    end
                 end
                 //0
                 else if (counter_row == 4 && counter_col == 5) begin
-                    if (TILE_ZERO_ART[art_y][art_x]) color <= WHITE;
-                    else color <= BLACK;
+                    if ( M == 3'b101 | M == 3'b110) color <= center_9_color;
+                    else begin
+                        if (TILE_ZERO_ART[art_y][art_x]) color <= WHITE;
+                        else color <= BLACK;
+                    end
                 end
                 //#
                 else if (counter_row == 4 && counter_col == 6) begin
-                    if (TILE_SHARP_ART[art_y][art_x]) color <= WHITE;
-                    else color <= BLACK;
+                    if ( M == 3'b101 | M == 3'b110) color <= center_10_color;
+                    else begin
+                        if (TILE_SHARP_ART[art_y][art_x]) color <= WHITE;
+                        else color <= BLACK;
+                    end
                 end
                 //*
                 else if (counter_row == 4 && counter_col == 7) begin
-                    if (TILE_STAR_ART[art_y][art_x]) color <= WHITE;
-                    else color <= BLACK;
+                    if ( M == 3'b101 | M == 3'b110) color <= center_11_color;
+                    else begin
+                        if (TILE_STAR_ART[art_y][art_x]) color <= WHITE;
+                        else color <= BLACK;
+                    end
                 end
                 //화살표 타일
                 //북서쪽
