@@ -16,7 +16,7 @@ module C_controller(
 	       cnt <= 28'd0;
 	       C <= 0;
 	    end
-		else if( M == 3'b000 | M == 3'b010 | M == 3'b101 ) begin
+		else if( M == 3'b000 | M == 3'b010 | M == 3'b101 | M == 3'b110) begin
 			if ( cnt == 28'b1000111100001101000110000000 ) begin
 				C <= 1;
 				cnt <= 28'd0;
