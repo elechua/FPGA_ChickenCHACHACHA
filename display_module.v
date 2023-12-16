@@ -75,6 +75,19 @@ module display_module(
     assign edge_21_color = edge_order[11:8];
     assign edge_22_color = edge_order[7:4];
     assign edge_23_color = edge_order[3:0];
+
+    assign center_0_color = center_order[47:44];
+    assign center_1_color = center_order[43:40];
+    assign center_2_color = center_order[39:36];
+    assign center_3_color = center_order[35:32];
+    assign center_4_color = center_order[31:28];
+    assign center_5_color = center_order[27:24];
+    assign center_6_color = center_order[23:20];
+    assign center_7_color = center_order[19:16];
+    assign center_8_color = center_order[15:12];
+    assign center_9_color = center_order[11:8];
+    assign center_10_color = center_order[7:4];
+    assign center_11_color = center_order[3:0];
     
     reg [4-1:0] color;
     
