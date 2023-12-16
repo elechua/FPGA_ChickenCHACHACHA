@@ -804,6 +804,10 @@ module display_module(
                 if (TILE_WRONG_ART[col9_y][col9_x]) color <= WHITE;
                 else color <= BLACK;
             end
+            else if ( M == 3'b110 ) begin
+                if (TILE_RIGHT_ART[col9_y][col9_x]) color <= WHITE;
+                else color <= BLACK;
+            end
             else color <= BLACK;
         end
         else if ( counter_col == 9 && counter_row == 3 ) begin
