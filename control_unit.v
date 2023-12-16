@@ -55,7 +55,10 @@ module control_unit(
                     if(c == 0) M <= 3'b101;
                     else M <= 3'b011;
                 3'b110:
-                    if(win == 0) M <= 3'b011;
+                    if(win == 0) begin
+                        if(c == 0) M <= 3'b110;
+                        else if (c == 1) M <= 3'b011;
+                    end
                     else if(win == 1) M <= 3'b111;
                 3'b111:
                     M <= 3'b111;
