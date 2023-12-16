@@ -90,7 +90,6 @@ module display_module(
     assign center_11_color = center_order[3:0];
     
     reg [4-1:0] color;
-    
     reg [24-1:0] output_color;
     assign R = output_color[23:16];
     assign G = output_color[15:8];
