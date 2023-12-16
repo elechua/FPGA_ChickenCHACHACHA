@@ -798,8 +798,11 @@ module display_module(
                 // ROW 4 COL 2 ~ 7
                 //1
                 if (counter_row == 3 && counter_col == 2) begin
-                    if (TILE_ONE_ART[art_y][art_x]) color <= WHITE;
-                    else color <= BLACK;
+                    if ( M == 3'b101 | M == 3'b110) color <= 타일;
+                    else begin
+                        if (TILE_ONE_ART[art_y][art_x]) color <= WHITE;
+                        else color <= BLACK;
+                    end
                 end
                 //2
                 else if (counter_row == 3 && counter_col == 3) begin
