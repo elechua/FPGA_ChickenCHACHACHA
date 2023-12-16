@@ -823,7 +823,7 @@ module display_module(
                 // ROW 4 COL 2 ~ 7
                 //1
                 if (counter_row == 3 && counter_col == 2) begin
-                    if ( M == 3'b101 | M == 3'b110) color <= 타일;
+                    if ( M == 3'b101 | M == 3'b110) color <= center_0_color;
                     else begin
                         if (TILE_ONE_ART[art_y][art_x]) color <= WHITE;
                         else color <= BLACK;
