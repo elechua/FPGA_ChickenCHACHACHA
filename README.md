@@ -7,23 +7,45 @@ This is an undergraduate project that implements the Chicken Cha Cha Cha game on
 
 
 ### State Diagram
-<center>
-<img src="images/State_Diagram.png" alt="State_Diagram" width="500">
-</center>
+<div align="center">
+  <picture>
+  <img src="images/State_Diagram.png" alt="State_Diagram" width="500">
+  </picture>
+  <br>
+  <div align="center" width="80%">
+  <em>State Diagram</em>
+  </div>
+  <br>
+</div>
 
-This is the State Diagram.
+
+State Diagram consists of OOO, OOO
 
 
 ### Block Diagram
-
-<center>
-<img src="images/Block_Diagram.png" alt="State_Diagram" width="1000">
-</center>
+<div align="center">
+  <picture>
+  <img src="images/Block_Diagram.png" alt="State_Diagram" width="1000">
+  </picture>
+  <br>
+  <div align="center" width="80%">
+  <em>Block Diagram</em>
+  </div>
+  <br>
+</div>
 
 This is the Block Diagram.
 
-<center>
-<img src="images/Datapath.png" alt="State_Diagram" width="1000">
-</center>
+### Block Diagram
+<div align="center">
+  <picture>
+  <img src="images/Datapath.png" alt="State_Diagram" width="1000">
+  </picture>
+  <br>
+  <div align="center" width="80%">
+  <em>Datapath</em>
+  </div>
+  <br>
+</div>
 
 This is the Datapath
