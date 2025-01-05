@@ -1,12 +1,10 @@
 # Implementing Chicken Cha-Cha-Cha Board Game on FPGA
 ---
 
-### Introduction
-This is an undergraduate project where the Chicken Cha Cha Cha game was implemented on an FPGA using Verilog HDL.
+This is an undergraduate project that implements the Chicken Cha Cha Cha game on an FPGA using Verilog HDL.
 
-#### Rule
+### Rule
 
----
 
 ### State Diagram
 <center>
@@ -15,7 +13,6 @@ This is an undergraduate project where the Chicken Cha Cha Cha game was implemen
 
 This is the State Diagram.
 
----
 
 ### Block Diagram
 
