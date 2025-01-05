@@ -1,3 +1,3 @@
-# DS_project
+# Implementing Chicken Cha-Cha-Cha Board Game on FPGA
 
-여기가 메인
+![State Diagram](images/State Diagram.png)
