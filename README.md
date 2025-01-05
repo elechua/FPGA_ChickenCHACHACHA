@@ -20,13 +20,13 @@ This is the State Diagram.
 ### Block Diagram
 
 <center>
-<img src="images/Block_Diagram.png" alt="State_Diagram" width="500">
+<img src="images/Block_Diagram.png" alt="State_Diagram" width="1000">
 </center>
 
 This is the Block Diagram.
 
 <center>
-<img src="images/Datapath.png" alt="State_Diagram" width="500">
+<img src="images/Datapath.png" alt="State_Diagram" width="1000">
 </center>
 
 This is the Datapath
