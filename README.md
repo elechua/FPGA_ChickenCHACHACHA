@@ -42,11 +42,11 @@ This is an undergraduate project that implements the Chicken Cha Cha Cha game on
 ### Implementation
 <div align="center">
   <picture>
-  <img src="images/4P_TFT_LCD.jpg" alt="4_Player_Implementation_Image" width="400">
+  <img src="images/4P_TFT_LCD.jpg" alt="Implementation_Image" width="400">
   </picture>
   <br>
   <div align="center" width="80%">
-  <em>4 Player Implementation Image</em>
+  <em>Implementation Image</em>
   </div>
   <br>
 </div>
