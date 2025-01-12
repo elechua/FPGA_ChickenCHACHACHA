@@ -3,9 +3,6 @@
 
 This is an undergraduate project that implements the Chicken Cha Cha Cha game on an FPGA using Verilog HDL.
 
-### Rule
-
-
 ### State Diagram
 <div align="center">
   <picture>
@@ -17,9 +14,6 @@ This is an undergraduate project that implements the Chicken Cha Cha Cha game on
   </div>
   <br>
 </div>
-
-
-State Diagram consists of OOO, OOO
 
 
 ### Block Diagram
@@ -34,8 +28,6 @@ State Diagram consists of OOO, OOO
   <br>
 </div>
 
-This is the Block Diagram.
-
 ### Block Diagram
 <div align="center">
   <picture>
@@ -47,5 +39,3 @@ This is the Block Diagram.
   </div>
   <br>
 </div>
-
-This is the Datapath
