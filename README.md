@@ -28,7 +28,6 @@ This is an undergraduate project that implements the Chicken Cha Cha Cha game on
   <br>
 </div>
 
-### Block Diagram
 <div align="center">
   <picture>
   <img src="images/Datapath.png" alt="State_Diagram" width="1000">
